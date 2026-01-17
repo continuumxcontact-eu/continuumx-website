@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', sans-serif;
+    --font-cairo: 'Cairo', sans-serif;
+  }
+
+  html[dir='rtl'] {
+    font-family: var(--font-cairo);
+  }
+
+  html[dir='ltr'] {
+    font-family: var(--font-inter);
+  }
+
+  html[dir='rtl'] body {
+    font-family: var(--font-cairo);
+  }
+
+  html[dir='ltr'] body {
+    font-family: var(--font-inter);
+  }
+
+  body {
+    @apply bg-backgroundLight text-textPrimary transition-colors dark:bg-backgroundDark dark:text-textOnDark;
+  }
+}
+
+@layer utilities {
+  .rtl\:ml-0 {
+    direction: rtl;
+  }
+  
+  [dir='rtl'] .rtl\:ml-0 {
+    margin-left: 0;
+  }
+  
+  [dir='rtl'] .rtl\:mr-2 {
+    margin-right: 0.5rem;
+  }
+  
+  [dir='rtl'] .rtl\:group-hover\:-translate-x-1:hover {
+    transform: translateX(-0.25rem);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
