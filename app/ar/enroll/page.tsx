@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { Container } from '@/components/ui/container'
 import { EnrollmentForm } from '@/components/forms/enrollment-form'
 import { getTranslations } from '@/lib/i18n'
-
+export const dynamic = 'force-dynamic'
 export const metadata: Metadata = {
   title: 'التسجيل في دورة — Continuum X OÜ',
   description: 'سجل في إحدى برامجنا التدريبية الاحترافية.',
