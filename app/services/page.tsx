@@ -41,7 +41,9 @@ export default function ServicesPage() {
               ))}
             </ul>
             <Link href="/consultation">
-              <Button>{t.services.cta}</Button>
+            <Button variant="outline" className="w-13">
+  {t.services.cta}
+</Button>
             </Link>
           </CardContent>
         </Card>
@@ -61,7 +63,9 @@ export default function ServicesPage() {
               ))}
             </ul>
             <Link href="/consultation">
-              <Button>{t.services.cta}</Button>
+            <Button variant="outline" className="w-13">
+  {t.services.cta}
+</Button>
             </Link>
           </CardContent>
         </Card>
@@ -81,7 +85,9 @@ export default function ServicesPage() {
               ))}
             </ul>
             <Link href="/consultation">
-              <Button>{t.services.cta}</Button>
+            <Button variant="outline" className="w-13">
+  {t.services.cta}
+</Button>
             </Link>
           </CardContent>
         </Card>
@@ -101,7 +107,10 @@ export default function ServicesPage() {
               ))}
             </ul>
             <Link href="/courses">
-              <Button>{t.services.cta}</Button>
+            <Button variant="outline" className="w-13">
+  {t.services.cta}
+</Button>
+
             </Link>
           </CardContent>
         </Card>
