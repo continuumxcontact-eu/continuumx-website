@@ -1,9 +1,15 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Container } from '@/components/ui/container'
-import { getTranslations, getLocalizedPath } from '@/lib/i18n'
+import { getTranslations } from '@/lib/i18n'
 import { courses } from '@/lib/courses'
 import { ArrowRight } from 'lucide-react'
 
@@ -22,30 +28,48 @@ export default function CoursesPage() {
         <h1 className="mb-6 text-4xl font-bold tracking-tight text-textPrimary sm:text-5xl dark:text-textOnDark">
           {t.courses.title}
         </h1>
-        <p className="text-lg text-textMuted dark:text-textMuted">
+
+        {/* ✅ Text black/white (not muted) */}
+        <p className="text-lg text-black dark:text-white">
           Professional certification programs to upskill your team and advance your career.
         </p>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {courses.map((course) => (
-          <Card key={course.slug} className="flex flex-col">
+          <Card key={course.slug} className="flex h-full flex-col">
             <CardHeader>
-              <CardTitle>{course.title.en}</CardTitle>
-              <CardDescription>
-                {course.level.en} • {course.duration.en}
-              </CardDescription>
+              {/* ✅ Title black/white */}
+              <CardTitle className="text-black dark:text-white">
+                {course.title.en}
+              </CardTitle>
+
+              {/* ✅ Meta black/white */}
+              <CardDescription className="text-black dark:text-white">
+  <span className="font-semibold">{course.level.en}</span>
+  <span className="mx-6"></span>
+  <span className="font-semibold">{course.duration.en}</span>
+</CardDescription>
+
             </CardHeader>
-            <CardContent className="flex-1">
-              <p className="mb-4 text-sm text-textMuted dark:text-textMuted">
+
+            {/* ✅ Flex column so button sticks to bottom */}
+            <CardContent className="flex flex-1 flex-col">
+              {/* ✅ Description black/white */}
+              <p className="mt-3 mb-6 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+
                 {course.overview.en}
               </p>
-              <Link href={`/courses/${course.slug}`}>
-                <Button variant="outline" className="w-full group">
-                  {t.courses.viewDetails}
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 rtl:ml-0 rtl:mr-2 rtl:group-hover:-translate-x-1" />
-                </Button>
-              </Link>
+
+              {/* ✅ Button always at the bottom */}
+              <div className="mt-auto">
+                <Link href={`/courses/${course.slug}`}>
+                  <Button variant="outline" className="w-full group">
+                    {t.courses.viewDetails}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+              </div>
             </CardContent>
           </Card>
         ))}
