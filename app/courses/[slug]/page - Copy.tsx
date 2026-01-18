@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Container } from '@/components/ui/container'
-import { getTranslations } from '@/lib/i18n'
+import { getTranslations, getLocalizedPath } from '@/lib/i18n'
 import { getCourse, courses } from '@/lib/courses'
 
 export async function generateStaticParams() {
@@ -19,7 +19,9 @@ export async function generateMetadata({
   params: { slug: string }
 }): Promise<Metadata> {
   const course = getCourse(params.slug)
-  if (!course) return {}
+  if (!course) {
+    return {}
+  }
 
   return {
     title: `${course.title.en} — Continuum X OÜ`,
@@ -27,11 +29,7 @@ export async function generateMetadata({
   }
 }
 
-export default function CourseDetailPage({
-  params,
-}: {
-  params: { slug: string }
-}) {
+export default function CourseDetailPage({ params }: { params: { slug: string } }) {
   const course = getCourse(params.slug)
   const t = getTranslations('en')
 
@@ -41,65 +39,47 @@ export default function CourseDetailPage({
 
   return (
     <Container className="py-20">
-      <div className="mx-auto max-w-6xl">
-
-        {/* Back link */}
+      <div className="mx-auto max-w-4xl">
         <div className="mb-8">
           <Link
             href="/courses"
-            className="text-sm text-black hover:text-primary dark:text-white dark:hover:text-primary-soft"
+            className="text-sm text-textMuted hover:text-primary dark:text-textMuted dark:hover:text-primary-soft"
           >
             ← Back to Courses
           </Link>
         </div>
 
-        {/* Title + Meta */}
         <div className="mb-12">
           <h1 className="mb-4 text-4xl font-bold tracking-tight text-textPrimary sm:text-5xl dark:text-textOnDark">
             {course.title.en}
           </h1>
-
-          {/* Label bold + value normal | black in light / white in dark */}
-          <div className="flex flex-wrap gap-4 text-sm text-black dark:text-white">
+          <div className="flex flex-wrap gap-4 text-sm text-textMuted dark:text-textMuted">
             <span>
-              <span className="font-bold">{t.courses.level}:</span>{' '}
-              {course.level.en}
+              <strong>{t.courses.level}:</strong> {course.level.en}
             </span>
-
             <span>
-              <span className="font-bold">{t.courses.duration}:</span>{' '}
-              {course.duration.en}
+              <strong>{t.courses.duration}:</strong> {course.duration.en}
             </span>
-
             <span>
-              <span className="font-bold">{t.courses.format}:</span>{' '}
-              {course.format.en}
+              <strong>{t.courses.format}:</strong> {course.format.en}
             </span>
           </div>
         </div>
 
-        {/* Overview */}
         <div className="mb-8">
           <h2 className="mb-4 text-2xl font-semibold text-textPrimary dark:text-textOnDark">
             {t.courses.overview}
           </h2>
-          {/* Overview text black/white (not muted) */}
-          <p className="text-lg text-black dark:text-white">
-            {course.overview.en}
-          </p>
+          <p className="text-lg text-textMuted dark:text-textMuted">{course.overview.en}</p>
         </div>
 
-        {/* Main Content - stacked cards (one per row) */}
-        <div className="grid gap-8">
-          {/* Who it's for */}
+        <div className="grid gap-8 md:grid-cols-2">
           <Card>
-            <CardHeader className="pb-4">
-              <CardTitle className="text-black dark:text-white">
-                {t.courses.whoFor}
-              </CardTitle>
+            <CardHeader>
+              <CardTitle>{t.courses.whoFor}</CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-3 text-black dark:text-white">
+              <ul className="space-y-2 text-textMuted dark:text-textMuted">
                 {course.whoFor.en.map((item, i) => (
                   <li key={i} className="flex items-start">
                     <span className="mr-2 text-primary">•</span>
@@ -110,15 +90,12 @@ export default function CourseDetailPage({
             </CardContent>
           </Card>
 
-          {/* What you'll learn */}
           <Card>
-            <CardHeader className="pb-4">
-              <CardTitle className="text-black dark:text-white">
-                {t.courses.learn}
-              </CardTitle>
+            <CardHeader>
+              <CardTitle>{t.courses.learn}</CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-3 text-black dark:text-white">
+              <ul className="space-y-2 text-textMuted dark:text-textMuted">
                 {course.learn.en.map((item, i) => (
                   <li key={i} className="flex items-start">
                     <span className="mr-2 text-primary">•</span>
@@ -129,49 +106,30 @@ export default function CourseDetailPage({
             </CardContent>
           </Card>
 
-          {/* Tools */}
           <Card>
-            <CardHeader className="pb-4">
-              <CardTitle className="text-black dark:text-white">
-                {t.courses.tools}
-              </CardTitle>
+            <CardHeader>
+              <CardTitle>{t.courses.tools}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="flex flex-wrap gap-2">
                 {course.tools.en.map((tool, i) => (
-                 <span
-                 key={i}
-                 className="
-                   rounded-full
-                   border
-                   border-primary/40
-                   bg-primary/10
-                   px-3 py-1
-                   text-sm
-                   font-medium
-                   text-primary
-                   dark:border-primary/60
-                   dark:bg-primary/30
-                   dark:text-white
-                 "
-               >
-                 {tool}
-               </span>
-               
+                  <span
+                    key={i}
+                    className="rounded-full bg-primary/10 px-3 py-1 text-sm text-primary dark:bg-primary/20"
+                  >
+                    {tool}
+                  </span>
                 ))}
               </div>
             </CardContent>
           </Card>
 
-          {/* Outcomes */}
           <Card>
-            <CardHeader className="pb-4">
-              <CardTitle className="text-black dark:text-white">
-                {t.courses.outcomes}
-              </CardTitle>
+            <CardHeader>
+              <CardTitle>{t.courses.outcomes}</CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-3 text-black dark:text-white">
+              <ul className="space-y-2 text-textMuted dark:text-textMuted">
                 {course.outcomes.en.map((item, i) => (
                   <li key={i} className="flex items-start">
                     <span className="mr-2 text-primary">•</span>
@@ -183,25 +141,22 @@ export default function CourseDetailPage({
           </Card>
         </div>
 
-        {/* Certificate */}
         <Card className="mt-8 bg-primary/5 dark:bg-primary/10">
           <CardContent className="pt-6">
             <h3 className="mb-2 text-xl font-semibold text-textPrimary dark:text-textOnDark">
               {t.courses.certificate}
             </h3>
-            <p className="text-textMuted dark:text-textMuted">
-              {t.courses.certificateText}
-            </p>
+            <p className="text-textMuted dark:text-textMuted">{t.courses.certificateText}</p>
           </CardContent>
         </Card>
 
-        {/* Enroll */}
         <div className="mt-8 text-center">
           <Link href={`/enroll?course=${course.slug}`}>
-            <Button size="lg">{t.courses.enroll}</Button>
+            <Button size="lg">
+              {t.courses.enroll}
+            </Button>
           </Link>
         </div>
-
       </div>
     </Container>
   )
