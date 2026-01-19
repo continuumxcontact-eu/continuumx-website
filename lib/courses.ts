@@ -2,508 +2,335 @@ import { Locale } from './i18n'
 
 export interface Course {
   slug: string
-  title: {
-    en: string
-    ar: string
-  }
-  level: {
-    en: string
-    ar: string
-  }
-  duration: {
-    en: string
-    ar: string
-  }
-  format: {
-    en: string
-    ar: string
-  }
-  overview: {
-    en: string
-    ar: string
-  }
-  whoFor: {
-    en: string[]
-    ar: string[]
-  }
-  learn: {
-    en: string[]
-    ar: string[]
-  }
-  tools: {
-    en: string[]
-    ar: string[]
-  }
-  outcomes: {
-    en: string[]
-    ar: string[]
-  }
+  title: { en: string; ar: string }
+  level: { en: string; ar: string }
+  duration: { en: string; ar: string }
+  format: { en: string; ar: string }
+  overview: { en: string; ar: string }
+  whoFor: { en: string[]; ar: string[] }
+  learn: { en: string[]; ar: string[] }
+  tools: { en: string[]; ar: string[] }
+  outcomes: { en: string[]; ar: string[] }
 }
 
-export const courses: Course[] = [
-  {
-    slug: 'data-analytics-python',
-    title: {
-      en: 'Data Analytics with Python',
-      ar: 'تحليلات البيانات باستخدام Python',
-    },
-    level: {
-      en: 'Beginner → Intermediate',
-      ar: 'مبتدئ → متوسط',
-    },
-    duration: {
-      en: '30 hours',
-      ar: '30 ساعة',
-    },
-    format: {
-      en: 'Online/Hybrid',
-      ar: 'أونلاين/مختلط',
-    },
-    overview: {
-      en: 'Master the fundamentals of data analytics using Python. Learn to manipulate, analyze, and visualize data to extract meaningful insights for business decision-making.',
-      ar: 'أتقن أساسيات تحليلات البيانات باستخدام Python. تعلم معالجة وتحليل وتصور البيانات لاستخراج رؤى ذات معنى لاتخاذ القرارات التجارية.',
-    },
-    whoFor: {
-      en: [
-        'Beginners with basic programming knowledge',
-        'Business analysts looking to enhance their skills',
-        'Professionals transitioning to data roles',
-      ],
-      ar: [
-        'المبتدئون الذين لديهم معرفة أساسية بالبرمجة',
-        'محللو الأعمال الذين يتطلعون إلى تحسين مهاراتهم',
-        'المهنيون الذين ينتقلون إلى أدوار البيانات',
-      ],
-    },
-    learn: {
-      en: [
-        'Python fundamentals for data analysis',
-        'Data manipulation with Pandas and NumPy',
-        'Data visualization with Matplotlib and Seaborn',
-        'Statistical analysis and hypothesis testing',
-        'Working with real-world datasets',
-      ],
-      ar: [
-        'أساسيات Python لتحليل البيانات',
-        'معالجة البيانات باستخدام Pandas و NumPy',
-        'تصور البيانات باستخدام Matplotlib و Seaborn',
-        'التحليل الإحصائي واختبار الفرضيات',
-        'العمل مع مجموعات البيانات الواقعية',
-      ],
-    },
-    tools: {
-      en: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Jupyter'],
-      ar: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Jupyter'],
-    },
-    outcomes: {
-      en: [
-        'Proficient in Python for data analysis',
-        'Ability to clean and prepare datasets',
-        'Create compelling data visualizations',
-        'Perform statistical analysis',
-        'Build data-driven reports',
-      ],
-      ar: [
-        'الإتقان في Python لتحليل البيانات',
-        'القدرة على تنظيف وإعداد مجموعات البيانات',
-        'إنشاء تصورات بيانات مقنعة',
-        'إجراء التحليل الإحصائي',
-        'بناء تقارير مدعومة بالبيانات',
-      ],
-    },
-  },
+export interface Diploma {
+  slug: string
+  title: { en: string; ar: string }
+  level: { en: string; ar: string }
+  duration: { en: string; ar: string }
+  format: { en: string; ar: string }
+  overview: { en: string; ar: string }
+  note: { en: string; ar: string }
+  courses: string[] // course slugs (order matters)
+}
 
-  // ✅ UPDATED COURSE (keep slug to avoid breaking links)
+/* =========================
+   COURSES
+========================= */
+export const courses: Course[] = [
   {
     slug: 'power-bi-business-intelligence',
     title: {
       en: 'Power BI Fundamentals: From Data to Interactive Dashboards',
       ar: 'أساسيات Power BI: من البيانات إلى لوحات تفاعلية',
     },
-    level: {
-      en: 'Beginner',
-      ar: 'مبتدئ',
-    },
-    duration: {
-      en: '30 hours',
-      ar: '30 ساعة',
-    },
-    format: {
-      en: 'Online/Hybrid',
-      ar: 'أونلاين/مختلط',
-    },
+    level: { en: 'Beginner', ar: 'مبتدئ' },
+    duration: { en: '30 hours', ar: '30 ساعة' },
+    format: { en: 'Online/Hybrid', ar: 'أونلاين/مختلط' },
     overview: {
-      en: 'A practical beginner course that teaches you how to import, clean, model, and visualize data using Microsoft Power BI. You will build interactive dashboards and learn to answer real business questions—no programming required.',
-      ar: 'كورس عملي للمبتدئين يعلّمك استيراد البيانات وتنظيفها وبناء نموذج بيانات وعرضها باستخدام Microsoft Power BI. ستبني لوحات تفاعلية وتتعلم الإجابة عن أسئلة أعمال واقعية—بدون برمجة.',
+      en: 'A practical beginner course to import, clean, model, and visualize data in Power BI and build interactive dashboards—no programming required.',
+      ar: 'كورس عملي للمبتدئين لتعلم استيراد البيانات وتنظيفها وبناء نموذج وعرضها في Power BI وبناء Dashboards تفاعلية—بدون برمجة.',
     },
     whoFor: {
       en: [
         'Fresh graduates and career starters in data analytics',
         'Business professionals (HR, Finance, Supply Chain, Marketing, Operations)',
-        'Anyone who wants to build dashboards and understand data with no technical background',
-        'Professionals who work with Excel and want a modern reporting tool',
+        'Anyone who wants dashboards without technical background',
       ],
       ar: [
         'الخريجون الجدد وبداية المسار في تحليل البيانات',
-        'محترفو الأعمال: HR والمالية وسلاسل الإمداد والتسويق والعمليات',
-        'أي شخص يريد فهم البيانات وبناء Dashboards بدون خلفية تقنية',
-        'كل من يعمل على Excel ويريد أداة تقارير حديثة واحترافية',
+        'محترفو الأعمال (HR/Finance/Supply Chain/Marketing/Operations)',
+        'أي شخص يريد بناء Dashboards بدون خلفية تقنية',
       ],
     },
     learn: {
       en: [
-        'Understand the BI workflow: from raw data to insights and decisions',
-        'Navigate Power BI Desktop confidently (Report / Data / Model views)',
-        'Import data from Excel/CSV and validate data types',
-        'Clean and transform data using Power Query (remove duplicates, handle missing values, split/merge columns, filters)',
-        'Build a simple and correct data model (fact vs dimension basics, relationships)',
-        'Create beginner-friendly DAX measures (SUM, COUNT, AVERAGE) and simple KPIs',
-        'Build interactive visuals (charts, tables, slicers) with proper filtering',
-        'Apply dashboard design basics (layout, readability, KPI placement, storytelling)',
-        'Build a mini end-to-end dashboard project (Sales/HR/Finance scenario)',
+        'Power BI workflow: data → model → visuals → insights',
+        'Import data (Excel/CSV) and validate data types',
+        'Power Query cleaning basics',
+        'Basic data modeling (relationships)',
+        'Beginner DAX measures (SUM/COUNT/AVERAGE) + simple KPIs',
+        'Build interactive visuals and slicers',
+        'Dashboard design basics',
+        'Mini end-to-end dashboard project',
       ],
       ar: [
-        'فهم دورة عمل ذكاء الأعمال: من البيانات الخام إلى الرؤى واتخاذ القرار',
-        'التعامل مع Power BI Desktop بثقة (Report / Data / Model)',
-        'استيراد البيانات من Excel/CSV وفهم أنواع البيانات والتحقق منها',
-        'تنظيف وتحويل البيانات باستخدام Power Query (إزالة التكرار، القيم الناقصة، تقسيم/دمج الأعمدة، الفلاتر)',
-        'بناء نموذج بيانات بسيط وصحيح (أساسيات Fact/Dimension وإنشاء العلاقات)',
-        'إنشاء Measures في DAX للمبتدئين (SUM/COUNT/AVERAGE) وKPIs بسيطة',
-        'بناء مرئيات تفاعلية (Charts/Tables/Slicers) وفلاتر بشكل صحيح',
-        'أساسيات تصميم الداشبورد (تنظيم، وضوح، توزيع KPIs، Data Storytelling)',
-        'تنفيذ مشروع صغير End-to-End (سيناريو Sales/HR/Finance)',
+        'فهم دورة عمل Power BI: بيانات → نموذج → مرئيات → رؤى',
+        'استيراد البيانات (Excel/CSV) وفهم أنواع البيانات',
+        'أساسيات التنظيف في Power Query',
+        'أساسيات Data Modeling (العلاقات)',
+        'DAX للمبتدئين (SUM/COUNT/AVERAGE) وKPIs بسيطة',
+        'بناء Charts وSlicers تفاعلية',
+        'أساسيات تصميم الداشبورد',
+        'مشروع صغير End-to-End',
       ],
     },
     tools: {
-      en: [
-        'Microsoft Power BI Desktop',
-        'Power Query (Data Transformation)',
-        'Basic DAX (Measures & KPIs)',
-        'Data Modeling (Relationships)',
-        'Excel/CSV Datasets',
-      ],
-      ar: [
-        'Microsoft Power BI Desktop',
-        'Power Query (تحويل وتنظيف البيانات)',
-        'DAX (أساسيات الـ Measures والـ KPIs)',
-        'Data Modeling (العلاقات بين الجداول)',
-        'Datasets بصيغة Excel/CSV',
-      ],
+      en: ['Power BI Desktop', 'Power Query', 'Basic DAX', 'Excel/CSV datasets'],
+      ar: ['Power BI Desktop', 'Power Query', 'DAX (أساسيات)', 'Datasets Excel/CSV'],
     },
     outcomes: {
       en: [
-        'Build an interactive dashboard from a real dataset',
-        'Prepare and clean data correctly inside Power BI (Power Query)',
-        'Create a correct data model and relationships',
-        'Create meaningful KPIs and answer business questions using visuals',
-        'Gain a portfolio-ready beginner project and be ready for Excel, Statistics, SQL, and Advanced Power BI',
+        'Build a complete beginner dashboard',
+        'Clean and model data correctly',
+        'Create KPIs and answer business questions',
       ],
       ar: [
-        'بناء Dashboard تفاعلي من بيانات واقعية',
-        'تنظيف وتجهيز البيانات بشكل صحيح داخل Power BI (Power Query)',
-        'بناء نموذج بيانات صحيح وإنشاء العلاقات بين الجداول',
-        'إنشاء KPIs مفيدة والإجابة عن أسئلة الأعمال باستخدام المرئيات',
-        'مشروع جاهز للعرض في Portfolio والاستعداد لمسارات Excel والإحصاء وSQL وPower BI Advanced',
+        'بناء Dashboard كامل للمبتدئين',
+        'تنظيف البيانات وبناء نموذج صحيح',
+        'إنشاء KPIs والإجابة على أسئلة الأعمال',
       ],
     },
   },
 
   {
-    slug: 'machine-learning-foundations',
+    slug: 'sql-for-data-analysis-basics',
     title: {
-      en: 'Machine Learning Foundations',
-      ar: 'أساسيات التعلم الآلي',
+      en: 'SQL for Data Analysis (Basics)',
+      ar: 'SQL لتحليل البيانات (أساسيات)',
     },
-    level: {
-      en: 'Intermediate',
-      ar: 'متوسط',
-    },
-    duration: {
-      en: '30 hours',
-      ar: '30 ساعة',
-    },
-    format: {
-      en: 'Online/Hybrid',
-      ar: 'أونلاين/مختلط',
-    },
+    level: { en: 'Beginner', ar: 'مبتدئ' },
+    duration: { en: '20–24 hours', ar: '20–24 ساعة' },
+    format: { en: 'Online/Hybrid', ar: 'أونلاين/مختلط' },
     overview: {
-      en: 'Build a solid foundation in machine learning concepts and algorithms. Learn to implement ML models and evaluate their performance for real-world applications.',
-      ar: 'بناء أساس متين في مفاهيم وخوارزميات التعلم الآلي. تعلم تنفيذ نماذج ML وتقييم أدائها للتطبيقات الواقعية.',
+      en: 'Learn SQL for analytics: SELECT, filtering, aggregation, joins, and common analysis patterns—without database administration.',
+      ar: 'تعلم SQL للتحليل: SELECT والتصفية والتجميع والـ Joins وأنماط التحليل الشائعة—بدون مهام إدارة قواعد البيانات.',
     },
     whoFor: {
       en: [
-        'Data analysts ready to advance',
-        'Software engineers entering ML',
-        'Researchers and academics',
+        'Beginners who need SQL for analytics',
+        'Analysts working with databases',
+        'Anyone who needs data extraction for BI',
       ],
       ar: [
-        'محللو البيانات المستعدون للتقدم',
-        'مهندسو البرمجيات الذين يدخلون ML',
-        'الباحثون والأكاديميون',
+        'مبتدئون يحتاجون SQL للتحليل',
+        'محللو بيانات يعملون مع قواعد البيانات',
+        'أي شخص يحتاج استخراج بيانات للـ BI',
       ],
     },
     learn: {
       en: [
-        'Supervised and unsupervised learning',
-        'Regression and classification algorithms',
-        'Model evaluation and validation',
-        'Feature engineering techniques',
-        'Hyperparameter tuning',
-        'Introduction to neural networks',
+        'How tables/rows/columns represent data',
+        'SELECT + WHERE + ORDER BY + LIMIT',
+        'Aggregations: COUNT/SUM/AVG + GROUP BY + HAVING',
+        'Joins for analysis (INNER/LEFT)',
+        'Working with dates/text (basic functions)',
+        'Subqueries and CTEs (WITH) basics',
+        'Common patterns: top-N, duplicates, data quality checks',
       ],
       ar: [
-        'التعلم الخاضع للإشراف وغير الخاضع للإشراف',
-        'خوارزميات الانحدار والتصنيف',
-        'تقييم والتحقق من النماذج',
-        'تقنيات هندسة الميزات',
-        'ضبط المعاملات الفائقة',
-        'مقدمة للشبكات العصبية',
+        'فهم الجداول والصفوف والأعمدة',
+        'SELECT و WHERE و ORDER BY و LIMIT',
+        'التجميع: COUNT/SUM/AVG مع GROUP BY و HAVING',
+        'Joins للتحليل (INNER/LEFT)',
+        'التعامل مع التواريخ والنصوص (دوال أساسية)',
+        'Subqueries و CTEs (WITH)',
+        'أنماط شائعة: Top-N، التكرارات، جودة البيانات',
       ],
     },
     tools: {
-      en: ['Python', 'Scikit-learn', 'Pandas', 'NumPy', 'Matplotlib'],
-      ar: ['Python', 'Scikit-learn', 'Pandas', 'NumPy', 'Matplotlib'],
+      en: ['SQL', 'PostgreSQL (or MySQL)', 'DBeaver (or any SQL client)'],
+      ar: ['SQL', 'PostgreSQL (أو MySQL)', 'DBeaver (أو أي SQL client)'],
     },
     outcomes: {
       en: [
-        'Understand ML algorithms and concepts',
-        'Implement and train ML models',
-        'Evaluate model performance',
-        'Apply ML to solve business problems',
-        'Prepare for advanced ML topics',
+        'Write queries for analysis',
+        'Use joins and aggregation confidently',
+        'Extract data for dashboards and reports',
       ],
       ar: [
-        'فهم خوارزميات ومفاهيم ML',
-        'تنفيذ وتدريب نماذج ML',
-        'تقييم أداء النماذج',
-        'تطبيق ML لحل مشاكل الأعمال',
-        'الاستعداد لمواضيع ML المتقدمة',
+        'كتابة استعلامات للتحليل',
+        'استخدام joins والتجميع بثقة',
+        'استخراج بيانات للـ dashboards والتقارير',
       ],
     },
   },
+
   {
-    slug: 'ai-tools-professionals',
+    slug: 'introduction-to-computers-programming-python',
     title: {
-      en: 'AI Tools for Professionals',
-      ar: 'أدوات الذكاء الاصطناعي للمحترفين',
+      en: 'Introduction to Computers & Programming using Python',
+      ar: 'مقدمة في الحاسوب والبرمجة باستخدام Python',
     },
-    level: {
-      en: 'All levels',
-      ar: 'جميع المستويات',
-    },
-    duration: {
-      en: '12 hours',
-      ar: '12 ساعة',
-    },
-    format: {
-      en: 'Online/Hybrid',
-      ar: 'أونلاين/مختلط',
-    },
+    level: { en: 'Absolute Beginner', ar: 'مبتدئ تمامًا' },
+    duration: { en: '30–36 hours', ar: '30–36 ساعة' },
+    format: { en: 'Online/Hybrid', ar: 'أونلاين/مختلط' },
     overview: {
-      en: 'Discover and master the latest AI tools that can enhance your productivity and workflow. Learn to leverage AI for content creation, analysis, and automation.',
-      ar: 'اكتشف وأتقن أحدث أدوات الذكاء الاصطناعي التي يمكن أن تعزز إنتاجيتك وسير عملك. تعلم الاستفادة من الذكاء الاصطناعي لإنشاء المحتوى والتحليل والأتمتة.',
+      en: 'Start from zero: what a computer is, how it works, what programming means, then build simple Python programs step-by-step.',
+      ar: 'من الصفر: ما هو الكمبيوتر وكيف يعمل وما معنى البرمجة، ثم كتابة برامج Python بسيطة خطوة بخطوة.',
     },
     whoFor: {
       en: [
-        'All professionals seeking efficiency',
-        'Content creators and marketers',
-        'Business owners and entrepreneurs',
+        'Absolute beginners with no programming background',
+        'Career shifters and non-technical professionals',
+        'Students preparing for data/AI tracks',
       ],
       ar: [
-        'جميع المهنيين الذين يسعون للكفاءة',
-        'منشئو المحتوى والمسوقون',
-        'أصحاب الأعمال ورجال الأعمال',
+        'مبتدئون تمامًا بدون خبرة برمجية',
+        'أشخاص يغيرون مسارهم المهني',
+        'طلاب يستعدون لمسارات البيانات والـ AI',
       ],
     },
     learn: {
       en: [
-        'Overview of modern AI tools landscape',
-        'Prompt engineering best practices',
-        'AI for content generation',
-        'AI for data analysis and insights',
-        'Automation with AI assistants',
-        'Ethical considerations and best practices',
+        'What is a computer? hardware vs software',
+        'How programs run: inputs → processing → outputs',
+        'Algorithmic thinking & problem solving',
+        'Python basics: variables, types, input/output',
+        'Conditionals and loops',
+        'Functions',
+        'Working with files (basic)',
       ],
       ar: [
-        'نظرة عامة على مشهد أدوات الذكاء الاصطناعي الحديثة',
-        'أفضل ممارسات هندسة المطالبات',
-        'الذكاء الاصطناعي لتوليد المحتوى',
-        'الذكاء الاصطناعي لتحليل البيانات والرؤى',
-        'الأتمتة باستخدام مساعدي الذكاء الاصطناعي',
-        'الاعتبارات الأخلاقية وأفضل الممارسات',
+        'ما هو الكمبيوتر؟ الفرق بين Hardware وSoftware',
+        'كيف يعمل البرنامج: Input → Processing → Output',
+        'التفكير الخوارزمي وحل المشكلات',
+        'Python: المتغيرات وأنواع البيانات والإدخال والإخراج',
+        'الشروط والحلقات',
+        'الدوال',
+        'الملفات (أساسيات)',
       ],
     },
     tools: {
-      en: ['ChatGPT', 'Claude', 'Midjourney', 'Various AI platforms'],
-      ar: ['ChatGPT', 'Claude', 'Midjourney', 'منصات الذكاء الاصطناعي المختلفة'],
+      en: ['Python', 'VS Code', 'Google Colab'],
+      ar: ['Python', 'VS Code', 'Google Colab'],
     },
     outcomes: {
       en: [
-        'Proficient with leading AI tools',
-        'Create high-quality content faster',
-        'Automate repetitive tasks',
-        'Make informed decisions about AI adoption',
-        'Apply AI ethically in professional settings',
+        'Understand core computer/programming concepts',
+        'Write simple Python programs confidently',
+        'Be ready for Python for Data Analysis',
       ],
       ar: [
-        'الإتقان في أدوات الذكاء الاصطناعي الرائدة',
-        'إنشاء محتوى عالي الجودة بشكل أسرع',
-        'أتمتة المهام المتكررة',
-        'اتخاذ قرارات مستنيرة حول اعتماد الذكاء الاصطناعي',
-        'تطبيق الذكاء الاصطناعي بشكل أخلاقي في البيئات المهنية',
+        'فهم أساسيات الكمبيوتر والبرمجة',
+        'كتابة برامج Python بسيطة بثقة',
+        'الاستعداد لكورس Python لتحليل البيانات',
       ],
     },
   },
+
   {
-    slug: 'advanced-analytics-supply-chain',
+    slug: 'data-analytics-python',
     title: {
-      en: 'Advanced Analytics for Supply Chain',
-      ar: 'التحليلات المتقدمة لسلسلة التوريد',
+      en: 'Data Analytics with Python',
+      ar: 'تحليلات البيانات باستخدام Python',
     },
-    level: {
-      en: 'Intermediate',
-      ar: 'متوسط',
-    },
-    duration: {
-      en: '18 hours',
-      ar: '18 ساعة',
-    },
-    format: {
-      en: 'Online/Hybrid',
-      ar: 'أونلاين/مختلط',
-    },
+    level: { en: 'Beginner → Intermediate', ar: 'مبتدئ → متوسط' },
+    duration: { en: '30 hours', ar: '30 ساعة' },
+    format: { en: 'Online/Hybrid', ar: 'أونلاين/مختلط' },
     overview: {
-      en: 'Apply advanced analytics techniques to optimize supply chain operations. Learn forecasting, inventory optimization, and demand planning using data science methods.',
-      ar: 'طبق تقنيات التحليلات المتقدمة لتحسين عمليات سلسلة التوريد. تعلم التنبؤ وتحسين المخزون وتخطيط الطلب باستخدام طرق علم البيانات.',
+      en: 'Use Python for real data analysis: cleaning, exploration, visualization, and reporting using Pandas and NumPy.',
+      ar: 'استخدام Python لتحليل بيانات حقيقي: تنظيف، استكشاف، تصوّر، وتقارير باستخدام Pandas وNumPy.',
     },
     whoFor: {
       en: [
-        'Supply chain professionals',
-        'Operations managers',
-        'Data analysts in logistics',
+        'Learners who finished Python basics',
+        'Analysts who want automation beyond Excel',
+        'Professionals transitioning into data roles',
       ],
       ar: [
-        'المهنيون في سلسلة التوريد',
-        'مديرو العمليات',
-        'محللو البيانات في الخدمات اللوجستية',
+        'من أنهى أساسيات Python',
+        'محللو البيانات الذين يريدون أتمتة أكثر من Excel',
+        'محترفون ينتقلون لمجال البيانات',
       ],
     },
     learn: {
       en: [
-        'Supply chain data analysis',
-        'Demand forecasting models',
-        'Inventory optimization techniques',
-        'Risk analysis and mitigation',
-        'Performance metrics and KPIs',
-        'Case studies from real supply chains',
+        'Pandas fundamentals: loading, selecting, filtering',
+        'Cleaning: missing values, duplicates, types',
+        'Grouping and aggregation',
+        'Merging datasets',
+        'Visualization (Matplotlib)',
+        'Mini analysis project + insights report',
       ],
       ar: [
-        'تحليل بيانات سلسلة التوريد',
-        'نماذج التنبؤ بالطلب',
-        'تقنيات تحسين المخزون',
-        'تحليل المخاطر والتخفيف',
-        'مقاييس الأداء ومؤشرات الأداء الرئيسية',
-        'دراسات حالة من سلاسل التوريد الحقيقية',
+        'أساسيات Pandas: قراءة البيانات، الاختيار، الفلاتر',
+        'تنظيف البيانات: القيم الناقصة، التكرار، الأنواع',
+        'Grouping والتجميع',
+        'دمج datasets',
+        'الـ Visualization (Matplotlib)',
+        'مشروع صغير وتحليل + تقرير نتائج',
       ],
     },
     tools: {
-      en: ['Python', 'R', 'Excel', 'Tableau', 'SQL'],
-      ar: ['Python', 'R', 'Excel', 'Tableau', 'SQL'],
+      en: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Jupyter/Colab'],
+      ar: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Jupyter/Colab'],
     },
     outcomes: {
       en: [
-        'Optimize supply chain operations',
-        'Build demand forecasting models',
-        'Reduce inventory costs',
-        'Improve supply chain visibility',
-        'Make data-driven supply chain decisions',
+        'Analyze datasets end-to-end using Python',
+        'Clean data and produce insights',
+        'Build a small portfolio-ready project',
       ],
       ar: [
-        'تحسين عمليات سلسلة التوريد',
-        'بناء نماذج التنبؤ بالطلب',
-        'تقليل تكاليف المخزون',
-        'تحسين رؤية سلسلة التوريد',
-        'اتخاذ قرارات سلسلة التوريد المدعومة بالبيانات',
+        'تحليل بيانات End-to-End باستخدام Python',
+        'تنظيف البيانات واستخراج insights',
+        'مشروع صغير جاهز للـ Portfolio',
       ],
     },
   },
+
+  // باقي كورساتك اللي “مش ضمن الدبلومة” حطيهم هنا زي ما هم
+]
+
+/* =========================
+   DIPLOMAS
+========================= */
+export const diplomas: Diploma[] = [
   {
-    slug: 'deep-learning-computer-vision',
+    slug: 'data-analysis-diploma',
     title: {
-      en: 'Applied Deep Learning & Computer Vision',
-      ar: 'التعلم العميق التطبيقي ورؤية الكمبيوتر',
+      en: 'Professional Diploma in Data Analysis',
+      ar: 'الدبلومة المهنية في تحليل البيانات',
     },
-    level: {
-      en: 'Advanced',
-      ar: 'متقدم',
-    },
+    level: { en: 'Beginner → Intermediate', ar: 'مبتدئ → متوسط' },
     duration: {
-      en: '30 hours',
-      ar: '30 ساعة',
+      en: 'Certificate after completing all included courses',
+      ar: 'شهادة بعد إتمام كل كورسات الدبلومة',
     },
-    format: {
-      en: 'Online/Hybrid',
-      ar: 'أونلاين/مختلط',
-    },
+    format: { en: 'Online/Hybrid', ar: 'أونلاين/مختلط' },
     overview: {
-      en: 'Master deep learning and computer vision techniques for real-world applications. Build neural networks, work with images, and deploy models for production use.',
-      ar: 'أتقن تقنيات التعلم العميق ورؤية الكمبيوتر للتطبيقات الواقعية. بناء الشبكات العصبية والعمل مع الصور ونشر النماذج للاستخدام الإنتاجي.',
+      en: 'A structured path that builds real data analysis skills using Power BI, SQL, and Python with hands-on projects.',
+      ar: 'مسار منظم لبناء مهارات تحليل البيانات باستخدام Power BI وSQL وPython مع تطبيقات ومشاريع عملية.',
     },
-    whoFor: {
-      en: [
-        'Experienced ML practitioners',
-        'Computer vision engineers',
-        'Researchers in AI/ML',
-      ],
-      ar: [
-        'ممارسو ML ذوو الخبرة',
-        'مهندسو رؤية الكمبيوتر',
-        'الباحثون في الذكاء الاصطناعي/ML',
-      ],
+    note: {
+      en: 'You may enroll in any course as standalone. Completing all diploma courses grants the full diploma certificate.',
+      ar: 'يمكنك الالتحاق بأي كورس منفصل. عند إتمام كل كورسات الدبلومة تحصل على شهادة الدبلومة الكاملة.',
     },
-    learn: {
-      en: [
-        'Deep neural network architectures',
-        'Convolutional Neural Networks (CNNs)',
-        'Transfer learning and fine-tuning',
-        'Image classification and object detection',
-        'Model deployment and optimization',
-        'Real-world computer vision projects',
-      ],
-      ar: [
-        'هندسة الشبكات العصبية العميقة',
-        'الشبكات العصبية التلافيفية (CNNs)',
-        'نقل التعلم والضبط الدقيق',
-        'تصنيف الصور واكتشاف الكائنات',
-        'نشر وتحسين النماذج',
-        'مشاريع رؤية الكمبيوتر الواقعية',
-      ],
-    },
-    tools: {
-      en: ['TensorFlow', 'PyTorch', 'Keras', 'OpenCV', 'Python'],
-      ar: ['TensorFlow', 'PyTorch', 'Keras', 'OpenCV', 'Python'],
-    },
-    outcomes: {
-      en: [
-        'Build and train deep learning models',
-        'Implement computer vision solutions',
-        'Apply transfer learning effectively',
-        'Deploy models to production',
-        'Solve complex visual recognition tasks',
-      ],
-      ar: [
-        'بناء وتدريب نماذج التعلم العميق',
-        'تنفيذ حلول رؤية الكمبيوتر',
-        'تطبيق نقل التعلم بشكل فعال',
-        'نشر النماذج للإنتاج',
-        'حل مهام التعرف البصري المعقدة',
-      ],
-    },
+    courses: [
+      'power-bi-business-intelligence',
+      'sql-for-data-analysis-basics',
+      'introduction-to-computers-programming-python',
+      'data-analytics-python',
+    ],
   },
 ]
 
+/* =========================
+   HELPERS
+========================= */
 export function getCourse(slug: string): Course | undefined {
-  return courses.find((course) => course.slug === slug)
+  return courses.find((c) => c.slug === slug)
+}
+
+export function getDiploma(slug: string): Diploma | undefined {
+  return diplomas.find((d) => d.slug === slug)
+}
+
+export function getDiplomaCourses(diploma: Diploma): Course[] {
+  return diploma.courses
+    .map((s) => getCourse(s))
+    .filter((c): c is Course => Boolean(c))
 }
 
 export function getCourseTitle(course: Course, locale: Locale): string {
