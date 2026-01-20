@@ -34,19 +34,19 @@ export const courses: Course[] = [
   {
     slug: 'power-bi-business-intelligence',
     title: {
-      en: 'Power BI Beginner: Data Visualization & Interactive Dashboards',
-      ar: 'Power BI للمبتدئين: تصور البيانات ولوحات تفاعلية',
+      en: 'Power BI Beginner',
+      ar: 'Power BI للمبتدئين',
     },
     level: { en: 'Beginner (Zero-friendly)', ar: 'مبتدئ (مناسب للصفر)' },
     duration: { en: '30 hours', ar: '30 ساعة' },
     format: { en: 'Online/Hybrid', ar: 'أونلاين/مختلط' },
     overview: {
-      en: 'A beginner-friendly, highly practical introduction to Power BI focused on visualization and dashboard thinking. Learners explore real datasets, build interactive reports, and understand the end-to-end BI workflow—without heavy DAX or complex modeling.',
-      ar: 'مقدمة عملية جدًا في Power BI تركّز على فهم التصور ولوحات المعلومات. ستتعلم استكشاف بيانات واقعية وبناء تقارير تفاعلية وفهم دورة عمل الـ BI بالكامل—بدون تعقيد في DAX أو Modeling متقدم.',
+      en: 'A highly practical introduction focused on visualization and dashboard thinking. Build interactive reports and understand the BI workflow—without heavy DAX or complex modeling.',
+      ar: 'مقدمة عملية تركّز على تصور البيانات وطريقة التفكير في الداشبورد. ستبني تقارير تفاعلية وتفهم دورة عمل الـ BI—بدون DAX ثقيل أو Modeling معقد.',
     },
     whoFor: {
       en: [
-        'Absolute beginners who want to “see the big picture” of data analytics',
+        'Absolute beginners who want to “see the big picture” of analytics',
         'Business professionals (HR, Finance, Supply Chain, Marketing, Operations)',
         'Fresh graduates and career starters in data analytics and BI',
       ],
@@ -58,21 +58,21 @@ export const courses: Course[] = [
     },
     learn: {
       en: [
-        'How BI works: data → preparation → visuals → insights',
+        'BI workflow: data → preparation → visuals → insights',
         'Import datasets (Excel/CSV) and validate data types',
         'Power Query essentials: cleaning & simple transformations',
-        'Report building: charts, tables, filters, slicers, drill-through (intro)',
-        'Design principles for clear, executive-friendly dashboards',
-        'Basic measures and KPIs (light DAX: SUM/COUNT/AVERAGE)',
-        'A guided mini project: build your first interactive dashboard',
+        'Build reports: charts, tables, filters, slicers (and a light intro to drill-through)',
+        'Dashboard design principles for clarity and executive readability',
+        'Light measures & KPIs (basic DAX: SUM/COUNT/AVERAGE)',
+        'Guided mini project: your first interactive dashboard',
       ],
       ar: [
-        'فهم دورة الـ BI: بيانات → تجهيز → مرئيات → رؤى',
-        'استيراد البيانات (Excel/CSV) وفهم أنواع البيانات',
+        'دورة عمل الـ BI: بيانات → تجهيز → مرئيات → رؤى',
+        'استيراد البيانات (Excel/CSV) والتحقق من أنواع البيانات',
         'أساسيات Power Query: تنظيف وتحويلات بسيطة',
-        'بناء التقارير: Charts وTables وFilters وSlicers وDrill-through (مقدمة)',
-        'مبادئ تصميم Dashboards واضحة واحترافية',
-        'مقاييس وKPIs بسيطة (DAX خفيف: SUM/COUNT/AVERAGE)',
+        'بناء التقارير: Charts وTables وFilters وSlicers (ومقدمة خفيفة للـ Drill-through)',
+        'مبادئ تصميم داشبورد واضح ومناسب للإدارة',
+        'KPIs بسيطة (DAX أساسي: SUM/COUNT/AVERAGE)',
         'مشروع صغير مُوجّه: أول Dashboard تفاعلي',
       ],
     },
@@ -87,7 +87,7 @@ export const courses: Course[] = [
         'Prepare and visualize data confidently in Power BI',
       ],
       ar: [
-        'إنشاء Dashboard كامل للمبتدئين مع تفاعل وفلاتر',
+        'إنشاء Dashboard كامل للمبتدئين مع فلاتر وتفاعل',
         'فهم دورة عمل الـ BI وطريقة التفكير في الـ Dashboards',
         'تجهيز البيانات وعرضها بثقة داخل Power BI',
       ],
@@ -100,46 +100,46 @@ export const courses: Course[] = [
   {
     slug: 'excel-for-data-analysis',
     title: {
-      en: 'Excel for Data Analysis: Cleaning, Pivoting, and Reporting',
-      ar: 'Excel لتحليل البيانات: تنظيف وPivot وتقارير',
+      en: 'Excel for Data Analysis',
+      ar: 'Excel لتحليل البيانات',
     },
     level: { en: 'Beginner → Intermediate', ar: 'مبتدئ → متوسط' },
     duration: { en: '30 hours', ar: '30 ساعة' },
     format: { en: 'Online/Hybrid', ar: 'أونلاين/مختلط' },
     overview: {
-      en: 'A hands-on course that builds strong analysis fundamentals using Excel. Learners clean data, use formulas and PivotTables, and create clear analytical summaries—forming the perfect foundation before SQL and Power BI modeling.',
-      ar: 'كورس عملي يضع أساس قوي للتحليل باستخدام Excel. ستتعلم تنظيف البيانات، واستخدام المعادلات وPivotTables، وبناء ملخصات تحليلية واضحة—كأساس مثالي قبل SQL وPower BI المتقدم.',
+      en: 'Build strong analysis fundamentals using Excel: clean data, use formulas and PivotTables, and create clear KPI summaries—perfect preparation for SQL and Power BI.',
+      ar: 'بناء أساس قوي للتحليل باستخدام Excel: تنظيف البيانات، المعادلات، PivotTables، وملخصات KPIs واضحة—تمهيد ممتاز لـ SQL وPower BI.',
     },
     whoFor: {
       en: [
         'Beginners starting a data analytics career',
-        'Business professionals who work with spreadsheets daily',
+        'Business professionals working with spreadsheets daily',
         'Anyone who wants strong foundations before BI/SQL',
       ],
       ar: [
         'المبتدئون الذين يبدأون مسار تحليل البيانات',
-        'محترفو الأعمال الذين يتعاملون مع ملفات Excel يوميًا',
+        'محترفو الأعمال الذين يتعاملون مع Excel يوميًا',
         'أي شخص يريد أساس قوي قبل BI وSQL',
       ],
     },
     learn: {
       en: [
-        'Data types, structure, and common quality issues',
-        'Data cleaning: duplicates, missing values, formatting, validation',
-        'Core formulas for analysis (IF, XLOOKUP, TEXT, DATE, logical checks)',
+        'Data structure, types, and common quality issues',
+        'Cleaning: duplicates, missing values, formatting, validation rules',
+        'Core formulas (IF, XLOOKUP, TEXT, DATE, logical checks)',
         'PivotTables & PivotCharts for fast analysis',
-        'Sorting, filtering, conditional formatting for insight discovery',
-        'Building a compact analytical report with business KPIs',
-        'Mini project: Excel analysis + summary dashboard sheet',
+        'Sorting, filtering, έχ conditional formatting for insight discovery',
+        'Compact analytical reporting: KPIs, trends, comparisons',
+        'Mini project: Excel analysis + one-page summary report',
       ],
       ar: [
-        'أنواع البيانات وبنيتها ومشاكل الجودة الشائعة',
-        'تنظيف البيانات: التكرار، القيم الناقصة، التنسيقات، التحقق',
-        'معادلات أساسية للتحليل (IF, XLOOKUP, TEXT, DATE وغيرها)',
+        'هيكلة البيانات وأنواعها ومشاكل الجودة الشائعة',
+        'تنظيف البيانات: التكرار، القيم الناقصة، التنسيق، قواعد التحقق',
+        'معادلات أساسية (IF, XLOOKUP, TEXT, DATE وغيرها)',
         'PivotTables وPivotCharts للتحليل السريع',
-        'الفرز والفلاتر وConditional Formatting لاكتشاف Insights',
-        'بناء تقرير تحليلي مختصر مع KPIs للأعمال',
-        'مشروع صغير: تحليل Excel + صفحة ملخص Dashboard',
+        'الفرز والفلاتر وConditional Formatting لاستخراج Insights',
+        'تقارير مختصرة: KPIs واتجاهات ومقارنات',
+        'مشروع صغير: تحليل Excel + تقرير ملخص صفحة واحدة',
       ],
     },
     tools: {
@@ -150,31 +150,31 @@ export const courses: Course[] = [
       en: [
         'Clean and structure real datasets in Excel',
         'Produce pivot-based insights and KPI summaries',
-        'Be fully ready for SQL and Power BI Intermediate',
+        'Be ready for SQL and Power BI Intermediate',
       ],
       ar: [
         'تنظيف وتنظيم بيانات واقعية داخل Excel',
         'استخراج Insights وبناء KPIs باستخدام Pivot',
-        'الاستعداد الكامل لـ SQL وPower BI (Intermediate)',
+        'الاستعداد لـ SQL وPower BI (Intermediate)',
       ],
     },
   },
 
   /* -------------------------------------------------
-     SQL FOR DATA ANALYSIS (BASICS → PRACTICAL)
+     SQL FOR DATA ANALYSIS
   -------------------------------------------------- */
   {
     slug: 'sql-for-data-analysis',
     title: {
-      en: 'SQL for Data Analysis: Querying, Joins, and Analytics Patterns',
-      ar: 'SQL لتحليل البيانات: الاستعلامات وJoins وأنماط التحليل',
+      en: 'SQL for Data Analysis',
+      ar: 'SQL لتحليل البيانات',
     },
     level: { en: 'Beginner → Intermediate', ar: 'مبتدئ → متوسط' },
     duration: { en: '30 hours', ar: '30 ساعة' },
     format: { en: 'Online/Hybrid', ar: 'أونلاين/مختلط' },
     overview: {
-      en: 'Learn SQL the way analysts use it: extracting data, validating quality, and answering business questions. Focus is on analytics—not database administration.',
-      ar: 'تعلم SQL بالطريقة التي يستخدمها محللو البيانات: استخراج البيانات، التحقق من الجودة، والإجابة على أسئلة الأعمال. التركيز على التحليل—not إدارة قواعد البيانات.',
+      en: 'Learn SQL the way analysts use it: extract data, validate quality, and answer business questions. Focus is on analytics—not database administration.',
+      ar: 'تعلم SQL كما يستخدمه محللو البيانات: استخراج بيانات، التحقق من الجودة، والإجابة على أسئلة الأعمال. التركيز على التحليل—not إدارة قواعد البيانات.',
     },
     whoFor: {
       en: [
@@ -190,24 +190,24 @@ export const courses: Course[] = [
     },
     learn: {
       en: [
-        'Relational data basics: tables, keys, and relationships',
+        'Relational basics: tables, keys, and relationships',
         'SELECT, WHERE, ORDER BY, LIMIT',
         'Aggregations: COUNT/SUM/AVG + GROUP BY + HAVING',
-        'Joins (INNER/LEFT) for analysis use-cases',
-        'Working with dates and text (practical functions)',
+        'Joins (INNER/LEFT) for common analysis use-cases',
+        'Dates & text functions (practical patterns)',
         'Subqueries and CTEs (WITH) for readable analytics',
-        'Analytics patterns: top-N, cohorts (intro), duplicates, data checks',
-        'Exporting/querying data for BI dashboards',
+        'Analytics patterns: top-N, duplicates, data checks',
+        'Export/query data for dashboards and reporting',
       ],
       ar: [
         'أساسيات البيانات العلائقية: الجداول والمفاتيح والعلاقات',
         'SELECT وWHERE وORDER BY وLIMIT',
         'التجميع: COUNT/SUM/AVG مع GROUP BY وHAVING',
         'Joins (INNER/LEFT) لحالات التحليل الشائعة',
-        'التعامل مع التواريخ والنصوص (دوال عملية)',
+        'دوال التواريخ والنصوص (أنماط عملية)',
         'Subqueries وCTEs (WITH) لكتابة تحليلات منظمة',
-        'أنماط تحليل: Top-N، Cohort (مقدمة)، التكرارات، فحوص الجودة',
-        'تجهيز البيانات لتغذية Dashboards وReports',
+        'أنماط تحليل: Top-N، التكرارات، فحوص جودة البيانات',
+        'تجهيز بيانات للـ Dashboards والتقارير',
       ],
     },
     tools: {
@@ -229,30 +229,30 @@ export const courses: Course[] = [
   },
 
   /* -------------------------------------------------
-     POWER BI (INTERMEDIATE) - Modeling & DAX Foundations
+     POWER BI (INTERMEDIATE)
   -------------------------------------------------- */
   {
     slug: 'power-bi-intermediate',
     title: {
-      en: 'Power BI Intermediate: Data Modeling, Power Query, and DAX Foundations',
-      ar: 'Power BI متوسط: نمذجة البيانات وPower Query وDAX (أساسيات متقدمة)',
+      en: 'Power BI Intermediate',
+      ar: 'Power BI مستوى متوسط',
     },
     level: { en: 'Intermediate', ar: 'متوسط' },
     duration: { en: '30 hours', ar: '30 ساعة' },
     format: { en: 'Online/Hybrid', ar: 'أونلاين/مختلط' },
     overview: {
-      en: 'Move beyond basic dashboards into professional BI building. Learners build solid data models, apply practical Power Query transformations, and create reliable DAX measures for KPI-driven reporting.',
-      ar: 'الانتقال من Dashboards الأساسية إلى بناء BI احترافي. ستتعلم بناء نموذج بيانات قوي، وتطبيق تحويلات عملية في Power Query، وإنشاء Measures قوية بـ DAX لتقارير تعتمد على KPIs.',
+      en: 'Build professional BI reports: strong data models, practical Power Query transformations, and reliable DAX measures for KPI-driven reporting.',
+      ar: 'بناء تقارير BI احترافية: نمذجة بيانات قوية، تحويلات عملية في Power Query، وMeasures موثوقة بـ DAX لتقارير تعتمد على KPIs.',
     },
     whoFor: {
       en: [
         'Learners who completed Power BI Beginner',
-        'Anyone who knows basic Excel and needs professional dashboards',
+        'Anyone with basic Excel/SQL who wants professional dashboards',
         'Analysts who want stronger modeling + DAX skills',
       ],
       ar: [
         'من أنهى Power BI للمبتدئين',
-        'من لديه أساس Excel ويريد Dashboards احترافية',
+        'من لديه أساس Excel/SQL ويريد Dashboards احترافية',
         'محللو بيانات يريدون Modeling أقوى وDAX عملي',
       ],
     },
@@ -262,18 +262,18 @@ export const courses: Course[] = [
         'Data modeling: relationships, cardinality, filter direction',
         'Intro to star schema (conceptual foundation)',
         'DAX foundations: measures vs columns, context basics',
-        'Core DAX patterns for KPIs (CALCULATE intro, DIVIDE, time basics)',
-        'Building multi-page reports with drill-down and consistent UX',
-        'Practical project: KPI dashboard powered by SQL-ready dataset',
+        'Core KPI measures (CALCULATE intro, DIVIDE, simple time comparisons)',
+        'Multi-page report structure, navigation, and consistent UX',
+        'Practical project: KPI dashboard built on a clean model',
       ],
       ar: [
-        'مهارات أعمق في Power Query: دمج/إلحاق، معالجة الأخطاء، أفضل الممارسات',
+        'Power Query بعمق: merge/append، معالجة الأخطاء، أفضل الممارسات',
         'Data Modeling: العلاقات، Cardinality، اتجاه الفلاتر',
         'مقدمة Star Schema كأساس للفهم',
-        'أساسيات DAX: الفرق بين Measures وColumns، مبادئ الـ Context',
-        'أنماط DAX لعمل KPIs (مقدمة CALCULATE، DIVIDE، أساسيات الوقت)',
-        'بناء تقارير متعددة الصفحات مع Drill-down وتجربة مستخدم موحدة',
-        'مشروع عملي: KPI Dashboard يعتمد على Dataset جاهز للـ BI/SQL',
+        'أساسيات DAX: Measures vs Columns، ومبادئ الـ Context',
+        'Measures أساسية للـ KPIs (مقدمة CALCULATE، DIVIDE، مقارنات وقت بسيطة)',
+        'هيكلة تقرير متعدد الصفحات مع تنقل وتجربة مستخدم موحدة',
+        'مشروع عملي: KPI Dashboard على Model نظيف ومنظم',
       ],
     },
     tools: {
@@ -295,20 +295,20 @@ export const courses: Course[] = [
   },
 
   /* -------------------------------------------------
-     STATISTICS FOR DATA ANALYSIS
+     STATISTICS
   -------------------------------------------------- */
   {
     slug: 'statistics-for-data-analysis',
     title: {
-      en: 'Statistics for Data Analysis: From Descriptive Metrics to Decision Making',
-      ar: 'الإحصاء لتحليل البيانات: من الوصف إلى اتخاذ القرار',
+      en: 'Statistics for Data Analysis',
+      ar: 'الإحصاء لتحليل البيانات',
     },
     level: { en: 'Beginner → Intermediate', ar: 'مبتدئ → متوسط' },
     duration: { en: '30 hours', ar: '30 ساعة' },
     format: { en: 'Online/Hybrid', ar: 'أونلاين/مختلط' },
     overview: {
-      en: 'A practical statistics course designed for analysts. Learners build statistical intuition to interpret KPIs, measure variability, analyze relationships, and make basic data-driven conclusions.',
-      ar: 'كورس إحصاء عملي موجه لمحللي البيانات. ستبني فهمًا إحصائيًا لتفسير KPIs، وقياس التشتت، وتحليل العلاقات، والوصول لاستنتاجات مبنية على البيانات.',
+      en: 'Practical statistics for analysts: interpret KPIs, understand variability, analyze relationships, and make basic data-driven conclusions.',
+      ar: 'إحصاء عملي للمحللين: تفسير KPIs، فهم التشتت، تحليل العلاقات، والوصول لاستنتاجات مبنية على البيانات.',
     },
     whoFor: {
       en: [
@@ -325,21 +325,21 @@ export const courses: Course[] = [
     learn: {
       en: [
         'Descriptive statistics: mean/median, variance, standard deviation',
-        'Distributions & probability basics (analyst-focused)',
+        'Probability & distributions (analyst-focused)',
         'Sampling intuition and why it matters in reporting',
-        'Correlation and interpretation (common pitfalls)',
+        'Correlation (interpretation + common pitfalls)',
         'Intro to simple regression (concept + interpretation)',
-        'Basic hypothesis testing concepts (p-value intuition, not heavy math)',
-        'Statistics for KPIs: comparing periods and understanding noise',
+        'Hypothesis testing intuition (p-values, confidence, practical meaning)',
+        'KPI comparisons: period-over-period and understanding noise',
       ],
       ar: [
-        'إحصاء وصفي: المتوسط/الوسيط، التباين، الانحراف المعياري',
-        'التوزيعات والاحتمالات (بشكل عملي للمحلل)',
+        'الإحصاء الوصفي: المتوسط/الوسيط، التباين، الانحراف المعياري',
+        'الاحتمالات والتوزيعات (بشكل عملي للمحلل)',
         'فكرة العينات ولماذا تهم في التقارير',
-        'الارتباط وكيفية تفسيره وتجنب الأخطاء الشائعة',
+        'الارتباط: تفسيره وتجنب الأخطاء الشائعة',
         'مقدمة في الانحدار البسيط (مفهوم وتفسير)',
-        'مفاهيم اختبار الفرضيات (فكرة p-value بدون تعقيد)',
-        'إحصاء الـ KPIs: مقارنة الفترات وفهم الضوضاء في البيانات',
+        'فهم اختبار الفرضيات (p-value والثقة والمعنى العملي)',
+        'مقارنات KPIs بين الفترات وفهم الضوضاء في البيانات',
       ],
     },
     tools: {
@@ -361,20 +361,20 @@ export const courses: Course[] = [
   },
 
   /* -------------------------------------------------
-     PYTHON BASICS (ZERO → READY)
+     PYTHON BASICS
   -------------------------------------------------- */
   {
     slug: 'python-basics-for-analysts',
     title: {
-      en: 'Python Basics for Data Analysts: Programming Fundamentals',
-      ar: 'أساسيات Python لمحللي البيانات: مبادئ البرمجة',
+      en: 'Python Basics for Analysts',
+      ar: 'أساسيات Python للمحللين',
     },
     level: { en: 'Absolute Beginner', ar: 'مبتدئ تمامًا' },
     duration: { en: '30 hours', ar: '30 ساعة' },
     format: { en: 'Online/Hybrid', ar: 'أونلاين/مختلط' },
     overview: {
-      en: 'Start from zero and learn programming fundamentals with Python. This course focuses on problem-solving and writing clean, simple code that prepares you for Python-based data analysis.',
-      ar: 'ابدأ من الصفر وتعلم أساسيات البرمجة باستخدام Python. يركز الكورس على التفكير المنطقي وحل المشكلات وكتابة كود بسيط وواضح يمهّد لتحليل البيانات بالبرمجة.',
+      en: 'Start from zero and learn programming fundamentals with Python. Focus on problem-solving and clean code to prepare for Python-based data analysis.',
+      ar: 'ابدأ من الصفر وتعلم أساسيات البرمجة بـ Python. يركز الكورس على حل المشكلات وكتابة كود واضح تمهيدًا لتحليل البيانات بالبرمجة.',
     },
     whoFor: {
       en: [
@@ -391,10 +391,10 @@ export const courses: Course[] = [
     learn: {
       en: [
         'How programs work: inputs → processing → outputs',
-        'Variables, data types, operators, and basic debugging',
+        'Variables, types, operators, and basic debugging',
         'Conditionals and loops (practical patterns)',
         'Functions and writing reusable code',
-        'Lists, dictionaries, and working with structured data',
+        'Lists, dictionaries, and structured data basics',
         'Reading/writing files (CSV basics)',
         'Mini exercises that build analyst-style thinking',
       ],
@@ -432,15 +432,15 @@ export const courses: Course[] = [
   {
     slug: 'data-analytics-python',
     title: {
-      en: 'Data Analytics with Python: Pandas, NumPy, and Practical EDA',
-      ar: 'تحليل البيانات باستخدام Python: Pandas وNumPy وEDA عملي',
+      en: 'Data Analytics with Python',
+      ar: 'تحليل البيانات بـ Python',
     },
     level: { en: 'Beginner → Intermediate', ar: 'مبتدئ → متوسط' },
     duration: { en: '30 hours', ar: '30 ساعة' },
     format: { en: 'Online/Hybrid', ar: 'أونلاين/مختلط' },
     overview: {
-      en: 'Analyze real datasets end-to-end using Python. Learners clean, explore, and visualize data with Pandas and NumPy, then communicate insights in a clear reporting style.',
-      ar: 'تحليل بيانات واقعية End-to-End باستخدام Python. ستتعلم تنظيف البيانات واستكشافها وعرضها باستخدام Pandas وNumPy ثم تقديم Insights في شكل تقرير واضح.',
+      en: 'Analyze real datasets end-to-end using Python. Clean, explore, and visualize data with Pandas and NumPy, then communicate insights in a clear reporting style.',
+      ar: 'تحليل بيانات واقعية End-to-End باستخدام Python. تنظيف واستكشاف وعرض البيانات بـ Pandas وNumPy ثم تقديم Insights في تقرير واضح.',
     },
     whoFor: {
       en: [
@@ -449,7 +449,7 @@ export const courses: Course[] = [
         'Professionals transitioning into data roles',
       ],
       ar: [
-        'من أنهى كورس أساسيات Python للمحللين',
+        'من أنهى أساسيات Python للمحللين',
         'محللو البيانات الذين يريدون أتمتة أكثر من Excel',
         'محترفون ينتقلون لمجال البيانات',
       ],
@@ -498,15 +498,15 @@ export const courses: Course[] = [
   {
     slug: 'power-bi-advanced-capstone',
     title: {
-      en: 'Power BI Advanced & Capstone: DAX, Performance, and End-to-End BI Delivery',
-      ar: 'Power BI متقدم + مشروع تخرّج: DAX وPerformance وحل BI متكامل',
+      en: 'Power BI Advanced & Capstone',
+      ar: 'Power BI متقدم + Capstone',
     },
     level: { en: 'Advanced', ar: 'متقدم' },
     duration: { en: '30 hours', ar: '30 ساعة' },
     format: { en: 'Online/Hybrid', ar: 'أونلاين/مختلط' },
     overview: {
-      en: 'A capstone-style advanced course that integrates everything learned across the diploma. Learners build a production-ready BI solution: strong modeling, advanced DAX, optimized performance, and a final portfolio dashboard backed by real business storytelling.',
-      ar: 'كورس متقدم بنظام Capstone يدمج كل ما تم تعلمه في الدبلومة. ستبني حل BI جاهز للاستخدام: Modeling قوي، DAX متقدم، تحسين الأداء، وDashboard نهائي للـ Portfolio مع Storytelling احترافي.',
+      en: 'A capstone-style advanced course that integrates the diploma skills. Build a production-ready BI solution with advanced DAX, optimized performance, and a portfolio-grade final dashboard.',
+      ar: 'كورس متقدم بنظام Capstone يدمج مهارات الدبلومة. ستبني حل BI جاهز للاستخدام بـ DAX متقدم وتحسين أداء وDashboard نهائي قوي للـ Portfolio.',
     },
     whoFor: {
       en: [
@@ -515,29 +515,29 @@ export const courses: Course[] = [
         'Professionals building a public portfolio (LinkedIn/GitHub)',
       ],
       ar: [
-        'من أنهى Power BI Intermediate',
+        'من أنهى Power BI (المستوى المتوسط)',
         'محللو بيانات يستهدفون مستوى أعلى في BI',
         'من يريد بناء Portfolio قوي (LinkedIn/GitHub)',
       ],
     },
     learn: {
       en: [
-        'Advanced data modeling: star schema patterns, role-playing dimensions (practical)',
+        'Advanced modeling: practical star schema patterns and role-playing dimensions',
         'Advanced DAX: context mastery, CALCULATE patterns, iterators (X functions)',
-        'Time intelligence patterns (practical KPI comparisons)',
-        'Performance optimization: model size, DAX optimization, Performance Analyzer',
-        'Advanced Power Query: best practices, folding awareness, robust transformations',
-        'Executive dashboard UX: storytelling, navigation, consistency, accessibility',
-        'Capstone delivery: SQL extraction + transformation + modeling + measures + final dashboard + insights presentation',
+        'Time intelligence patterns for KPI comparisons',
+        'Performance optimization: model size, DAX tuning, Performance Analyzer',
+        'Advanced Power Query: robust transformations and folding awareness',
+        'Executive dashboard UX: storytelling, navigation, consistency',
+        'Capstone delivery: SQL extraction → transformation → modeling → measures → final dashboard → insights presentation',
       ],
       ar: [
-        'نمذجة بيانات متقدمة: أنماط Star Schema وRole-playing dimensions (عملي)',
+        'Modeling متقدم: أنماط Star Schema وRole-playing dimensions بشكل عملي',
         'DAX متقدم: فهم الـ Context بعمق، أنماط CALCULATE، ودوال Iterators (X)',
-        'Time intelligence patterns لمقارنات KPIs بذكاء',
+        'Time intelligence لمقارنات KPIs بذكاء',
         'تحسين الأداء: حجم الموديل، تحسين DAX، Performance Analyzer',
-        'Power Query متقدم: أفضل الممارسات، فهم Query Folding بشكل عملي',
-        'UX للـ Dashboards التنفيذية: Storytelling، تنقل، اتساق، وإتاحة',
-        'مشروع تخرّج متكامل: SQL استخراج + تحويل + Modeling + Measures + Dashboard نهائي + عرض Insights',
+        'Power Query متقدم: تحويلات قوية وفهم Query Folding عمليًا',
+        'UX تنفيذي: Storytelling، تنقل، اتساق',
+        'مشروع تخرّج: SQL استخراج → تحويل → Modeling → Measures → Dashboard نهائي → عرض Insights',
       ],
     },
     tools: {
@@ -578,12 +578,12 @@ export const diplomas: Diploma[] = [
     },
     format: { en: 'Online/Hybrid', ar: 'أونلاين/مختلط' },
     overview: {
-      en: 'A structured, job-oriented path designed for learners starting from zero. The diploma builds real analytics skills across Excel, SQL, Statistics, Python, and Power BI—ending with an advanced capstone project and a portfolio-ready dashboard.',
-      ar: 'مسار منظم وموجّه لسوق العمل ومناسب لبدء التعلم من الصفر. تبني الدبلومة مهارات تحليل حقيقية عبر Excel وSQL والإحصاء وPython وPower BI—وتنتهي بمشروع تخرّج متقدم وDashboard جاهز للـ Portfolio.',
+      en: 'A structured, job-oriented path designed for learners starting from zero. Build real analytics skills across Excel, SQL, Statistics, Python, and Power BI—ending with an advanced capstone project and a portfolio-ready dashboard.',
+      ar: 'مسار منظم وموجه لسوق العمل ومناسب لبدء التعلم من الصفر. تبني الدبلومة مهارات تحليل حقيقية عبر Excel وSQL والإحصاء وPython وPower BI—وتنتهي بمشروع تخرّج متقدم وDashboard جاهز للـ Portfolio.',
     },
     note: {
-      en: 'Each course can be taken as a standalone micro-credential. The recommended order is designed to ensure smooth progression from zero knowledge to advanced capability. Completing all included courses (and the capstone) grants the full diploma certificate.',
-      ar: 'يمكن دراسة أي كورس كـ Micro-credential مستقل. الترتيب المقترح مصمم لضمان انتقال سلس من الصفر إلى مستوى متقدم. عند إتمام جميع كورسات الدبلومة (ومشروع التخرج) تحصل على شهادة الدبلومة الكاملة.',
+      en: 'Each course can be taken as a standalone micro-credential. The recommended order ensures smooth progression from zero knowledge to advanced capability. Completing all included courses (and the capstone) grants the full diploma certificate.',
+      ar: 'يمكن دراسة أي كورس كـ Micro-credential مستقل. الترتيب المقترح يضمن انتقالًا سلسًا من الصفر إلى مستوى متقدم. عند إتمام جميع كورسات الدبلومة (ومشروع التخرج) تحصل على شهادة الدبلومة الكاملة.',
     },
     courses: [
       // 1) Motivation / Visualization first
