@@ -558,6 +558,75 @@ export const courses: Course[] = [
     },
   },
 
+  {
+    slug: 'introduction-to-ai',
+    title: {
+      en: 'Introduction to Artificial Intelligence',
+      ar: 'مقدمة في الذكاء الاصطناعي',
+    },
+    level: {
+      en: 'Beginner (Non-technical)',
+      ar: 'مبتدئ (غير تقني)',
+    },
+    duration: {
+      en: '20 hours',
+      ar: '20 ساعة',
+    },
+    format: {
+      en: 'Online',
+      ar: 'أونلاين',
+    },
+    overview: {
+      en: 'A high-level, beginner-friendly introduction to Artificial Intelligence. Learn what AI is, how it is used in real life, and how it differs from data analytics and machine learning—no coding required.',
+      ar: 'مقدمة مبسطة وعملية في الذكاء الاصطناعي. ستتعرف على مفهوم AI وتطبيقاته الواقعية والفرق بينه وبين تحليل البيانات وتعلم الآلة—بدون برمجة.',
+    },
+    whoFor: {
+      en: [
+        'Absolute beginners curious about AI',
+        'Business professionals and decision-makers',
+        'Students exploring AI before technical learning',
+      ],
+      ar: [
+        'مبتدئون تمامًا مهتمون بالذكاء الاصطناعي',
+        'محترفو الأعمال وصناع القرار',
+        'طلاب يريدون فهم AI قبل التعمق التقني',
+      ],
+    },
+    learn: {
+      en: [
+        'What Artificial Intelligence really means',
+        'AI vs Data Analytics vs Machine Learning',
+        'Real-world AI applications (business, healthcare, marketing)',
+        'Basic AI terminology and concepts',
+        'Ethics, limitations, and common misconceptions',
+      ],
+      ar: [
+        'ما هو الذكاء الاصطناعي فعليًا',
+        'الفرق بين AI وData Analytics وMachine Learning',
+        'تطبيقات الذكاء الاصطناعي في الواقع',
+        'مصطلحات ومفاهيم أساسية في AI',
+        'أخلاقيات الذكاء الاصطناعي وحدوده',
+      ],
+    },
+    tools: {
+      en: ['Case studies', 'Videos', 'Interactive discussions'],
+      ar: ['دراسات حالة', 'فيديوهات', 'مناقشات تفاعلية'],
+    },
+    outcomes: {
+      en: [
+        'Understand AI concepts clearly without coding',
+        'Make informed decisions when working with AI teams',
+        'Know whether to pursue technical AI learning next',
+      ],
+      ar: [
+        'فهم واضح لمفاهيم الذكاء الاصطناعي بدون برمجة',
+        'القدرة على اتخاذ قرارات واعية عند العمل مع فرق AI',
+        'تحديد الخطوة التالية في تعلم الذكاء الاصطناعي',
+      ],
+    },
+  },
+  
+
   // باقي كورساتك اللي “مش ضمن الدبلومة” حطيهم هنا زي ما هم
 ]
 
@@ -610,7 +679,9 @@ export const diplomas: Diploma[] = [
       // 8) Advanced integration & capstone
       'power-bi-advanced-capstone',
     ],
+  
   },
+  
 ]
 
 /* =========================

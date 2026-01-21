@@ -11,9 +11,15 @@ import { courses, diplomas } from '../../lib/courses'
 export default function CoursesPage() {
   const t = getTranslations('en')
 
+  // ✅ Collect all course slugs included in ANY diploma
+  const diplomaCourseSlugs = new Set(diplomas.flatMap((d) => d.courses))
+
+  // ✅ Keep only courses NOT included in diplomas
+  const standaloneCourses = courses.filter((c) => !diplomaCourseSlugs.has(c.slug))
+
   return (
     <Container className="py-20">
-      <div className="mx-auto max-w-3xl text-center mb-16">
+      <div className="mx-auto mb-16 max-w-3xl text-center">
         <h1 className="mb-6 text-4xl font-bold tracking-tight text-textPrimary sm:text-5xl dark:text-textOnDark">
           {t.courses.title}
         </h1>
@@ -25,22 +31,30 @@ export default function CoursesPage() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {/* ✅ DIPLOMAS FIRST */}
         {diplomas.map((d) => (
-          <Card key={d.slug} className="flex h-full flex-col border-2 border-red-700">
+          <Card
+            key={d.slug}
+            className="
+              flex h-full flex-col
+              border-2 border-transparent
+              hover:border-red-700
+              transition-all duration-200
+            "
+          >
             <CardHeader>
               <CardTitle className="text-black dark:text-white">{d.title.en}</CardTitle>
+
               <CardDescription className="text-black dark:text-white">
-                <span className="font-semibold">{d.level.en}</span>
-                <span className="mx-6"></span>
-                <span className="font-semibold">{d.duration.en}</span>
+                <span className="block font-semibold">{d.level.en}</span>
+                <span className="block font-semibold">{d.duration.en}</span>
               </CardDescription>
             </CardHeader>
 
             <CardContent className="flex flex-1 flex-col">
-              <p className="mt-3 mb-4 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+              <p className="mt-3 mb-6 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
                 {d.overview.en}
               </p>
 
-              <p className="mb-6 text-xs font-medium text-red-700">{d.note.en}</p>
+              {/* ✅ Removed note from list page (show it only inside diploma details page) */}
 
               <div className="mt-auto">
                 <Link href={`/diplomas/${d.slug}`}>
@@ -54,15 +68,23 @@ export default function CoursesPage() {
           </Card>
         ))}
 
-        {/* ✅ COURSES */}
-        {courses.map((c) => (
-          <Card key={c.slug} className="flex h-full flex-col">
+        {/* ✅ STANDALONE COURSES ONLY (NOT IN DIPLOMAS) */}
+        {standaloneCourses.map((c) => (
+          <Card
+            key={c.slug}
+            className="
+              flex h-full flex-col
+              border-2 border-transparent
+              hover:border-red-700
+              transition-all duration-200
+            "
+          >
             <CardHeader>
               <CardTitle className="text-black dark:text-white">{c.title.en}</CardTitle>
+
               <CardDescription className="text-black dark:text-white">
-                <span className="font-semibold">{c.level.en}</span>
-                <span className="mx-6"></span>
-                <span className="font-semibold">{c.duration.en}</span>
+                <span className="block font-semibold">{c.level.en}</span>
+                <span className="block font-semibold">{c.duration.en}</span>
               </CardDescription>
             </CardHeader>
 
