@@ -40,59 +40,67 @@ export const courses: Course[] = [
     level: { en: 'Beginner (Zero-friendly)', ar: 'مبتدئ (مناسب للصفر)' },
     duration: { en: '30 hours', ar: '30 ساعة' },
     format: { en: 'Online/Hybrid', ar: 'أونلاين/مختلط' },
+  
     overview: {
-      en: 'A highly practical introduction focused on visualization and dashboard thinking. Build interactive reports and understand the BI workflow—without heavy DAX or complex modeling.',
-      ar: 'مقدمة عملية تركّز على تصور البيانات وطريقة التفكير في الداشبورد. ستبني تقارير تفاعلية وتفهم دورة عمل الـ BI—بدون DAX ثقيل أو Modeling معقد.',
+      en: 'A highly practical introduction that starts with what data and data analysis mean in real business contexts, then focuses on visualization and dashboard thinking. Learn how Power BI fits into the BI workflow and build interactive reports—without heavy DAX or complex modeling.',
+      ar: 'مقدمة عملية تبدأ بشرح معنى البيانات وتحليل البيانات في سياق الأعمال، ثم تركز على تصور البيانات وطريقة التفكير في الداشبورد. ستتعلم دور Power BI في دورة عمل الـ BI وتبني تقارير تفاعلية—بدون DAX ثقيل أو Modeling معقد.',
     },
+  
     whoFor: {
       en: [
-        'Absolute beginners who want to “see the big picture” of analytics',
+        'Absolute beginners who want to understand the big picture of data analytics',
         'Business professionals (HR, Finance, Supply Chain, Marketing, Operations)',
         'Fresh graduates and career starters in data analytics and BI',
       ],
       ar: [
-        'مبتدئون تمامًا يريدون فهم الصورة الكبيرة لتحليل البيانات',
-        'محترفو الأعمال (HR/Finance/Supply Chain/Marketing/Operations)',
-        'الخريجون الجدد وبداية المسار المهني في تحليل البيانات وBI',
+        'مبتدئون تمامًا يريدون فهم الصورة الكاملة لتحليل البيانات',
+        'محترفو الأعمال (HR / Finance / Supply Chain / Marketing / Operations)',
+        'الخريجون الجدد وبداية المسار المهني في تحليل البيانات وذكاء الأعمال',
       ],
     },
+  
     learn: {
       en: [
+        'What data is, what data analysis means, and the role of BI tools',
         'BI workflow: data → preparation → visuals → insights',
         'Import datasets (Excel/CSV) and validate data types',
         'Power Query essentials: cleaning & simple transformations',
-        'Build reports: charts, tables, filters, slicers (and a light intro to drill-through)',
+        'Build reports: charts, tables, filters, slicers (with a light intro to drill-through)',
         'Dashboard design principles for clarity and executive readability',
-        'Light measures & KPIs (basic DAX: SUM/COUNT/AVERAGE)',
+        'Light measures & KPIs (basic DAX: SUM / COUNT / AVERAGE)',
         'Guided mini project: your first interactive dashboard',
       ],
       ar: [
+        'ما هي البيانات وما هو تحليل البيانات ودور أدوات الـ BI',
         'دورة عمل الـ BI: بيانات → تجهيز → مرئيات → رؤى',
-        'استيراد البيانات (Excel/CSV) والتحقق من أنواع البيانات',
+        'استيراد البيانات (Excel / CSV) والتحقق من أنواع البيانات',
         'أساسيات Power Query: تنظيف وتحويلات بسيطة',
         'بناء التقارير: Charts وTables وFilters وSlicers (ومقدمة خفيفة للـ Drill-through)',
         'مبادئ تصميم داشبورد واضح ومناسب للإدارة',
-        'KPIs بسيطة (DAX أساسي: SUM/COUNT/AVERAGE)',
-        'مشروع صغير مُوجّه: أول Dashboard تفاعلي',
+        'KPIs ومقاييس بسيطة (DAX أساسي: SUM / COUNT / AVERAGE)',
+        'مشروع تطبيقي مُوجّه: أول Dashboard تفاعلي',
       ],
     },
+  
     tools: {
-      en: ['Power BI Desktop', 'Power Query', 'Light DAX', 'Excel/CSV datasets'],
-      ar: ['Power BI Desktop', 'Power Query', 'DAX (خفيف)', 'Datasets Excel/CSV'],
+      en: ['Power BI Desktop', 'Power Query', 'Light DAX', 'Excel / CSV datasets'],
+      ar: ['Power BI Desktop', 'Power Query', 'DAX (خفيف)', 'Datasets Excel / CSV'],
     },
+  
     outcomes: {
       en: [
-        'Build a complete beginner dashboard with interactive filtering',
-        'Understand BI workflow and dashboard thinking',
-        'Prepare and visualize data confidently in Power BI',
+        'Build a complete beginner-level dashboard with interactive filtering',
+        'Understand the BI workflow and dashboard thinking',
+        'Prepare and visualize data confidently using Power BI',
       ],
       ar: [
         'إنشاء Dashboard كامل للمبتدئين مع فلاتر وتفاعل',
-        'فهم دورة عمل الـ BI وطريقة التفكير في الـ Dashboards',
-        'تجهيز البيانات وعرضها بثقة داخل Power BI',
+        'فهم دورة عمل الـ BI وطريقة التفكير في الداشبورد',
+        'تجهيز البيانات وعرضها بثقة باستخدام Power BI',
       ],
     },
   },
+  
 
   /* -------------------------------------------------
      EXCEL FOR DATA ANALYSIS

@@ -28,11 +28,18 @@ export function Footer() {
               />
               <span className="text-xl font-semibold">Continuum X</span>
             </Link>
+
             <p className="mb-4 max-w-md text-sm text-textMuted dark:text-textMuted">
               {t.footer.description}
             </p>
+
+            {/* ✅ Company legal line (adds Registry Code politely) */}
             <p className="text-xs text-textMuted dark:text-textMuted">
               {t.footer.company}
+              <span className="mx-2">•</span>
+              {locale === 'ar' ? 'رقم السجل التجاري' : 'Registry Code'}: 17407421
+              <span className="mx-2">•</span>
+              {locale === 'ar' ? 'تالين، إستونيا' : 'Tallinn, Estonia'}
             </p>
           </div>
 
@@ -69,7 +76,7 @@ export function Footer() {
               <li>
                 <Link
                   href={getLocalizedPath('/terms', locale)}
-                  className="text-sm text-sm text-textMuted transition-colors hover:text-primary dark:text-textMuted dark:hover:text-primary-soft"
+                  className="text-sm text-textMuted transition-colors hover:text-primary dark:text-textMuted dark:hover:text-primary-soft"
                 >
                   {t.footer.links.terms}
                 </Link>
