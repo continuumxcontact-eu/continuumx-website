@@ -4,6 +4,20 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useLanguage } from './providers'
 import { getTranslations, getLocalizedPath } from '@/lib/i18n'
+import { Linkedin, Instagram, Facebook, Phone } from 'lucide-react'
+
+function XIcon(props: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className={props.className}
+      fill="currentColor"
+    >
+      <path d="M18.9 2H22l-6.77 7.73L23 22h-6.2l-4.86-6.33L6.5 22H3.4l7.25-8.29L1 2h6.35l4.4 5.75L18.9 2Zm-1.08 18.2h1.72L7.28 3.7H5.43l12.39 16.5Z" />
+    </svg>
+  )
+}
 
 export function Footer() {
   const { locale } = useLanguage()
@@ -33,7 +47,7 @@ export function Footer() {
               {t.footer.description}
             </p>
 
-            {/* ✅ Company legal line (adds Registry Code politely) */}
+            {/* ✅ Company legal line */}
             <p className="text-xs text-textMuted dark:text-textMuted">
               {t.footer.company}
               <span className="mx-2">•</span>
@@ -89,6 +103,7 @@ export function Footer() {
             <h3 className="mb-4 text-sm font-semibold text-textPrimary dark:text-textOnDark">
               {t.contact.title}
             </h3>
+
             <ul className="space-y-3">
               <li>
                 <a
@@ -99,6 +114,64 @@ export function Footer() {
                 </a>
               </li>
             </ul>
+
+            {/* ✅ Social Media Icons under Contact */}
+            <div className="mt-4 flex items-center gap-4">
+              {/* WhatsApp (Phone icon inside circle) */}
+              <a
+                href="https://wa.me/201555309965"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="rounded-full border border-border p-2 text-textMuted transition-all hover:border-primary hover:text-primary"
+              >
+                <Phone className="h-5 w-5" />
+              </a>
+
+              {/* LinkedIn (temporary personal profile) */}
+              <a
+                href="https://www.linkedin.com/in/mai-magdy-2539b7163/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="rounded-full border border-border p-2 text-textMuted transition-all hover:border-primary hover:text-primary"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/continuumx"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="rounded-full border border-border p-2 text-textMuted transition-all hover:border-primary hover:text-primary"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+
+              {/* Facebook */}
+              <a
+                href="https://www.facebook.com/continuumx"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="rounded-full border border-border p-2 text-textMuted transition-all hover:border-primary hover:text-primary"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
+
+              {/* X */}
+              <a
+                href="https://x.com/continuumx"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X"
+                className="rounded-full border border-border p-2 text-textMuted transition-all hover:border-primary hover:text-primary"
+              >
+                <XIcon className="h-5 w-5" />
+              </a>
+            </div>
           </div>
         </div>
 
