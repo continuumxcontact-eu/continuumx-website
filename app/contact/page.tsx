@@ -23,10 +23,10 @@ export default function ContactPage() {
               {t.contact.email}
             </h3>
             <a
-              href="mailto:continuumx.contact@gmail.com"
+              href="mailto:contact@continuumx-ai.com"
               className="text-textMuted hover:text-primary dark:text-textMuted dark:hover:text-primary-soft"
             >
-              continuumx.contact@gmail.com
+              contact@continuumx-ai.com
             </a>
           </div>
           <div>
