@@ -110,7 +110,7 @@ export function Footer() {
                   href="mailto:contact@continuumx-ai.com"
                   className="text-sm text-textMuted transition-colors hover:text-primary dark:text-textMuted dark:hover:text-primary-soft"
                 >
-                  continuumx.contact@gmail.com
+                  contact@continuumx-ai.com
                 </a>
               </li>
             </ul>
