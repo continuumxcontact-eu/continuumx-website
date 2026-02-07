@@ -107,7 +107,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="mailto:continuumx.contact@gmail.com"
+                  href="mailto:contact@continuumx-ai.com"
                   className="text-sm text-textMuted transition-colors hover:text-primary dark:text-textMuted dark:hover:text-primary-soft"
                 >
                   continuumx.contact@gmail.com
