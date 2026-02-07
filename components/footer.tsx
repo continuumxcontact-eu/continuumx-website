@@ -130,7 +130,7 @@ export function Footer() {
 
               {/* LinkedIn (temporary personal profile) */}
               <a
-                href="https://www.linkedin.com/in/mai-magdy-2539b7163/"
+                href="https://www.linkedin.com/company/continuumx-ai"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
