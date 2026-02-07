@@ -577,16 +577,16 @@ export const courses: Course[] = [
       ar: 'مبتدئ (غير تقني)',
     },
     duration: {
-      en: '20 hours',
-      ar: '20 ساعة',
+      en: '',
+      ar: '',
     },
     format: {
-      en: 'Online',
-      ar: 'أونلاين',
+      en: '',
+      ar: '',
     },
     overview: {
-      en: 'A high-level, beginner-friendly introduction to Artificial Intelligence. Learn what AI is, how it is used in real life, and how it differs from data analytics and machine learning—no coding required.',
-      ar: 'مقدمة مبسطة وعملية في الذكاء الاصطناعي. ستتعرف على مفهوم AI وتطبيقاته الواقعية والفرق بينه وبين تحليل البيانات وتعلم الآلة—بدون برمجة.',
+      en: 'Comping soon.',
+      ar: '',
     },
     whoFor: {
       en: [
