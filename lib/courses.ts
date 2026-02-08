@@ -585,7 +585,7 @@ export const courses: Course[] = [
       ar: '',
     },
     overview: {
-      en: 'Comping soon.',
+      en: 'Comming soon.',
       ar: '',
     },
     whoFor: {
