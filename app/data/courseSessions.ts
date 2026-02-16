@@ -11,8 +11,15 @@ export const sessions: Session[] = [
     id: 'pbi_beginner_morning',
     courseSlug: 'power-bi-business-intelligence',
     isActive: true,
-    label: 'Fri 10:00 AM – 03:00 PM',
+    label: 'Ramdan Sat 12:30 PM – 16:30 PM -- After Ramdan: Sat 10:00 AM – 14:00 PM',
   },
+  {
+    id: 'pbi_beginner_evening',
+    courseSlug: 'power-bi-business-intelligence',
+    isActive: true,
+    label: 'Ramdan Sat 19:30 PM – 00:30 AM -- After Ramdan: Sat 18:00 PM – 22:00 PM',
+  },
+
 
   // =========================
   // Excel for Data Analysis
@@ -33,13 +40,13 @@ export const sessions: Session[] = [
     id: 'sql_morning',
     courseSlug: 'sql-for-data-analysis',
     isActive: true,
-    label: 'Sat 12:30 PM – 4:30 PM',
+    label: 'Ramdan: Fri 10:00 AM – 15:00 PM -- After Ramadan: Sat 10:00 AM –- 15:00 PM',
   },
   {
     id: 'sql_evening',
     courseSlug: 'sql-for-data-analysis',
     isActive: true,
-    label: 'Sat 8:30 PM – 00:30 AM',
+    label: 'Ramdan Fri 20:30 PM – 00:30 AM -- After Ramdan: Fri 18:00 PM – 22:00 PM',
   },
 
   // =========================
@@ -72,7 +79,7 @@ export const sessions: Session[] = [
     id: 'python_basics_evening',
     courseSlug: 'python-basics-for-analysts',
     isActive: true,
-    label: 'Mon,Thu 8:30 PM – 11:30 PM',
+    label: 'Ramdan: Mon,Thu 20:30 PM – 23:00 PM -- After Ramdan: Mon,Thu 19:00 PM – 21:30 PM',
   },
  
 
