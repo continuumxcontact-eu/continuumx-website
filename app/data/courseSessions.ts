@@ -8,13 +8,13 @@ export type Session = {
 export const sessions: Session[] = [
  
   {
-    id: 'pbi_beginner_morning',
+    id: 'Ramdan-> Sat 12:30 PM – 16:30 PM / After Ramdan-> Sat 10:00 AM – 14:00 PM',
     courseSlug: 'power-bi-business-intelligence',
     isActive: true,
     label: 'Ramdan-> Sat 12:30 PM – 16:30 PM / After Ramdan-> Sat 10:00 AM – 14:00 PM',
   },
   {
-    id: 'pbi_beginner_evening',
+    id: 'Ramdan-> Sat 19:30 PM – 00:30 AM / After Ramdan-> Sat 18:00 PM – 22:00 PM',
     courseSlug: 'power-bi-business-intelligence',
     isActive: true,
     label: 'Ramdan-> Sat 19:30 PM – 00:30 AM / After Ramdan-> Sat 18:00 PM – 22:00 PM',
@@ -37,13 +37,13 @@ export const sessions: Session[] = [
   // slug: sql-for-data-analysis
   // =========================
   {
-    id: 'sql_morning',
+    id: 'Ramdan-> Fri 10:00 AM – 15:00 PM / After Ramadan-> Sat 10:00 AM – 15:00 PM',
     courseSlug: 'sql-for-data-analysis',
     isActive: true,
     label: 'Ramdan-> Fri 10:00 AM – 15:00 PM / After Ramadan-> Sat 10:00 AM – 15:00 PM',
   },
   {
-    id: 'sql_evening',
+    id: 'Ramdan-> Fri 20:30 PM – 00:30 AM / After Ramdan-> Fri 18:00 PM – 22:00 PM',
     courseSlug: 'sql-for-data-analysis',
     isActive: true,
     label: 'Ramdan-> Fri 20:30 PM – 00:30 AM / After Ramdan-> Fri 18:00 PM – 22:00 PM',
@@ -76,7 +76,7 @@ export const sessions: Session[] = [
   // slug: python-basics-for-analysts
   // =========================
   {
-    id: 'python_basics_evening',
+    id: 'Ramdan-> Mon,Thu 20:30 PM – 23:00 PM / After Ramdan-> Mon,Thu 19:00 PM – 21:30 PM',
     courseSlug: 'python-basics-for-analysts',
     isActive: true,
     label: 'Ramdan-> Mon,Thu 20:30 PM – 23:00 PM / After Ramdan-> Mon,Thu 19:00 PM – 21:30 PM',
