@@ -1,11 +1,12 @@
 'use client'
 
-import { useState, useTransition } from 'react'
+import { useEffect, useMemo, useState, useTransition } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useLanguage } from '@/components/providers'
 import { getTranslations, getLocalizedPath } from '@/lib/i18n'
 import { courses } from '@/lib/courses'
 import { submitEnrollment } from '@/lib/actions'
+import { sessions } from '@/app/data/courseSessions'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Select } from '@/components/ui/select'
@@ -20,15 +21,31 @@ export function EnrollmentForm() {
   const t = getTranslations(locale)
   const [isPending, startTransition] = useTransition()
   const [errors, setErrors] = useState<Record<string, string[]>>({})
+
   const [selectedCourse, setSelectedCourse] = useState(
     searchParams.get('course') || ''
   )
+
+  // Dynamic sessions
+  const [selectedSession, setSelectedSession] = useState('')
+
+  const sessionOptions = useMemo(() => {
+    if (!selectedCourse) return []
+    return sessions.filter(
+      (s) => s.courseSlug === selectedCourse && s.isActive
+    )
+  }, [selectedCourse])
+
+  useEffect(() => {
+    setSelectedSession('')
+  }, [selectedCourse])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setErrors({})
 
     const formData = new FormData(e.currentTarget)
+    formData.set('schedule', selectedSession)
 
     startTransition(async () => {
       const result = await submitEnrollment(formData)
@@ -46,123 +63,95 @@ export function EnrollmentForm() {
       <CardHeader>
         <CardTitle>{t.forms.enrollment.title}</CardTitle>
         <CardDescription>
-          {locale === 'ar'
-            ? 'املأ النموذج أدناه للتسجيل في إحدى دوراتنا.'
-            : 'Fill out the form below to enroll in one of our courses.'}
+          Thank you for your interest in Continuum X professional training programs.
+          <br />
+          Please fill in the form below to reserve your seat.
+          <br />
+          You will receive a confirmation email with payment details once the course is confirmed.
         </CardDescription>
       </CardHeader>
+
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
+
+          {/* Name */}
           <div>
-            <label htmlFor="name" className="mb-2 block text-sm font-medium text-textPrimary dark:text-textOnDark">
+            <label className="mb-2 block text-sm font-medium">
               {t.forms.enrollment.name} *
             </label>
-            <Input
-              id="name"
-              name="name"
-              required
-              className={errors.name ? 'border-red-500' : ''}
-            />
+            <Input name="name" required className={errors.name ? 'border-red-500' : ''} />
             {errors.name && (
               <p className="mt-1 text-sm text-red-500">{errors.name[0]}</p>
             )}
           </div>
 
+          {/* Email */}
           <div>
-            <label htmlFor="email" className="mb-2 block text-sm font-medium text-textPrimary dark:text-textOnDark">
+            <label className="mb-2 block text-sm font-medium">
               {t.forms.enrollment.email} *
             </label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              required
-              className={errors.email ? 'border-red-500' : ''}
-            />
+            <Input name="email" type="email" required className={errors.email ? 'border-red-500' : ''} />
             {errors.email && (
               <p className="mt-1 text-sm text-red-500">{errors.email[0]}</p>
             )}
           </div>
 
+          {/* Phone */}
           <div>
-            <label htmlFor="phone" className="mb-2 block text-sm font-medium text-textPrimary dark:text-textOnDark">
+            <label className="mb-2 block text-sm font-medium">
               {t.forms.enrollment.phone} *
             </label>
-            <Input
-              id="phone"
-              name="phone"
-              type="tel"
-              required
-              className={errors.phone ? 'border-red-500' : ''}
-            />
+            <Input name="phone" type="tel" required className={errors.phone ? 'border-red-500' : ''} />
             {errors.phone && (
               <p className="mt-1 text-sm text-red-500">{errors.phone[0]}</p>
             )}
           </div>
 
+          {/* Country */}
           <div>
-            <label htmlFor="country" className="mb-2 block text-sm font-medium text-textPrimary dark:text-textOnDark">
+            <label className="mb-2 block text-sm font-medium">
               {t.forms.enrollment.country} *
             </label>
-            <Input
-              id="country"
-              name="country"
-              required
-              className={errors.country ? 'border-red-500' : ''}
-            />
+            <Input name="country" required className={errors.country ? 'border-red-500' : ''} />
             {errors.country && (
               <p className="mt-1 text-sm text-red-500">{errors.country[0]}</p>
             )}
           </div>
 
+          {/* Background */}
           <div>
-            <label htmlFor="background" className="mb-2 block text-sm font-medium text-textPrimary dark:text-textOnDark">
+            <label className="mb-2 block text-sm font-medium">
               {t.forms.enrollment.background} *
             </label>
-            <Select
-              id="background"
-              name="background"
-              required
-              className={errors.background ? 'border-red-500' : ''}
-            >
-              <option value="">{locale === 'ar' ? 'اختر...' : 'Select...'}</option>
-              <option value={locale === 'ar' ? 'طالب' : 'Student'}>
-                {t.forms.enrollment.backgroundOptions.student}
-              </option>
-              <option value={locale === 'ar' ? 'محترف' : 'Professional'}>
-                {t.forms.enrollment.backgroundOptions.professional}
-              </option>
-              <option value={locale === 'ar' ? 'مهندس' : 'Engineer'}>
-                {t.forms.enrollment.backgroundOptions.engineer}
-              </option>
-              <option value={locale === 'ar' ? 'صاحب عمل' : 'Business Owner'}>
-                {t.forms.enrollment.backgroundOptions.businessOwner}
-              </option>
-              <option value={locale === 'ar' ? 'آخر' : 'Other'}>
-                {t.forms.enrollment.backgroundOptions.other}
-              </option>
+            <Select name="background" required className={errors.background ? 'border-red-500' : ''}>
+              <option value="">Select...</option>
+              <option value="Student">Student</option>
+              <option value="Professional">Professional</option>
+              <option value="Engineer">Engineer</option>
+              <option value="Business Owner">Business Owner</option>
+              <option value="Other">Other</option>
             </Select>
             {errors.background && (
               <p className="mt-1 text-sm text-red-500">{errors.background[0]}</p>
             )}
           </div>
 
+          {/* Course */}
           <div>
-            <label htmlFor="course" className="mb-2 block text-sm font-medium text-textPrimary dark:text-textOnDark">
+            <label className="mb-2 block text-sm font-medium">
               {t.forms.enrollment.course} *
             </label>
             <Select
-              id="course"
               name="course"
               required
               value={selectedCourse}
               onChange={(e) => setSelectedCourse(e.target.value)}
               className={errors.course ? 'border-red-500' : ''}
             >
-              <option value="">{locale === 'ar' ? 'اختر...' : 'Select...'}</option>
+              <option value="">Select...</option>
               {courses.map((course) => (
                 <option key={course.slug} value={course.slug}>
-                  {course.title[locale]}
+                  {course.title.en}
                 </option>
               ))}
             </Select>
@@ -171,63 +160,64 @@ export function EnrollmentForm() {
             )}
           </div>
 
+          {/* Dynamic Schedule */}
           <div>
-            <label htmlFor="schedule" className="mb-2 block text-sm font-medium text-textPrimary dark:text-textOnDark">
-              {t.forms.enrollment.schedule}
+            <label className="mb-2 block text-sm font-medium">
+              Course Date / Schedule *
             </label>
-            <Select id="schedule" name="schedule">
-              <option value="">{locale === 'ar' ? 'اختر...' : 'Select...'}</option>
-              <option value={locale === 'ar' ? 'أمسيات أيام الأسبوع' : 'Weekdays evenings'}>
-                {t.forms.enrollment.scheduleOptions.weekdays}
+
+            <Select
+              name="schedule"
+              required
+              value={selectedSession}
+              onChange={(e) => setSelectedSession(e.target.value)}
+              disabled={!selectedCourse}
+              className={errors.schedule ? 'border-red-500' : ''}
+            >
+              <option value="">
+                {!selectedCourse ? 'Select a course first' : 'Select...'}
               </option>
-              <option value={locale === 'ar' ? 'عطلات نهاية الأسبوع' : 'Weekends'}>
-                {t.forms.enrollment.scheduleOptions.weekends}
-              </option>
-              <option value={locale === 'ar' ? 'مرن' : 'Flexible'}>
-                {t.forms.enrollment.scheduleOptions.flexible}
-              </option>
+
+              {sessionOptions.map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.label}
+                </option>
+              ))}
             </Select>
+
+            {selectedCourse && sessionOptions.length === 0 && (
+              <p className="mt-2 text-sm text-gray-500">
+                No dates available for this course yet. We will contact you once the schedule is confirmed.
+              </p>
+            )}
+
+            {errors.schedule && (
+              <p className="mt-1 text-sm text-red-500">{errors.schedule[0]}</p>
+            )}
           </div>
 
+          {/* Message */}
           <div>
-            <label htmlFor="message" className="mb-2 block text-sm font-medium text-textPrimary dark:text-textOnDark">
+            <label className="mb-2 block text-sm font-medium">
               {t.forms.enrollment.message}
             </label>
-            <Textarea
-              id="message"
-              name="message"
-              rows={4}
-            />
+            <Textarea name="message" rows={4} />
           </div>
 
+          {/* Consent */}
           <div className="flex items-start gap-2">
-            <Checkbox
-              id="consent"
-              name="consent"
-              required
-              className={errors.consent ? 'border-red-500' : ''}
-            />
-            <label
-              htmlFor="consent"
-              className="text-sm text-textMuted dark:text-textMuted"
-            >
+            <Checkbox name="consent" required />
+            <label className="text-sm">
               {t.forms.enrollment.consent}
             </label>
           </div>
-          {errors.consent && (
-            <p className="text-sm text-red-500">{errors.consent[0]}</p>
-          )}
 
           {errors._form && (
             <p className="text-sm text-red-500">{errors._form[0]}</p>
           )}
 
           <Button type="submit" disabled={isPending} className="w-full">
-            {isPending
-              ? locale === 'ar'
-                ? 'جاري الإرسال...'
-                : 'Submitting...'
-              : t.forms.enrollment.submit}
+            {isPending ? 'Submitting...' : t.forms.enrollment.submit}
           </Button>
         </form>
       </CardContent>

@@ -6,16 +6,17 @@ import Image from 'next/image'
 import { Menu, X, Sun, Moon } from 'lucide-react'
 import { useLanguage } from './providers'
 import { useTheme } from './providers'
-import { getTranslations, getLocalizedPath, type Locale } from '@/lib/i18n'
+import { getTranslations, getLocalizedPath } from '@/lib/i18n'
 import { Button } from './ui/button'
 import { cn } from '@/lib/utils'
 
 export function Navbar() {
-  const { locale, setLocale } = useLanguage()
+  const { locale } = useLanguage()
   const { theme, toggleTheme } = useTheme()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const t = getTranslations(locale)
-  const isArabic = locale === 'ar'
+
+  // Force using English labels/paths
+  const t = getTranslations('en')
 
   const navLinks = [
     { href: '/services', label: t.nav.services },
@@ -35,14 +36,6 @@ export function Navbar() {
     }
   }, [mobileMenuOpen])
 
-  const handleLanguageChange = (newLocale: Locale) => {
-    setLocale(newLocale)
-    const currentPath = window.location.pathname
-    const basePath = currentPath.startsWith('/ar') ? currentPath.slice(3) : currentPath
-    const newPath = getLocalizedPath(basePath || '/', newLocale)
-    window.location.href = newPath
-  }
-
   return (
     <>
       {/* ===== NAVBAR ===== */}
@@ -51,7 +44,7 @@ export function Navbar() {
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <Link
-              href={getLocalizedPath('/', locale)}
+              href={getLocalizedPath('/', 'en')}
               className="flex items-center gap-0 text-textPrimary no-underline dark:text-textOnDark"
             >
               <Image
@@ -72,7 +65,7 @@ export function Navbar() {
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
-                  href={getLocalizedPath(link.href, locale)}
+                  href={getLocalizedPath(link.href, 'en')}
                   className="text-sm font-medium text-textPrimary transition-colors hover:text-primary dark:text-textOnDark dark:hover:text-primary-soft"
                 >
                   {link.label}
@@ -82,32 +75,6 @@ export function Navbar() {
 
             {/* Desktop Controls */}
             <div className="hidden items-center gap-3 md:flex">
-              {/* Language Switcher */}
-              <div className="flex items-center gap-1 rounded-lg border border-lightGray bg-surfaceLight p-1 dark:border-borderDark dark:bg-surfaceDark">
-                <button
-                  onClick={() => handleLanguageChange('en')}
-                  className={cn(
-                    'px-3 py-1.5 text-xs font-medium transition-colors',
-                    locale === 'en'
-                      ? 'bg-primary text-white'
-                      : 'text-textMuted hover:text-textPrimary dark:text-textMuted dark:hover:text-textOnDark'
-                  )}
-                >
-                  EN
-                </button>
-                <button
-                  onClick={() => handleLanguageChange('ar')}
-                  className={cn(
-                    'px-3 py-1.5 text-xs font-medium transition-colors',
-                    locale === 'ar'
-                      ? 'bg-primary text-white'
-                      : 'text-textMuted hover:text-textPrimary dark:text-textMuted dark:hover:text-textOnDark'
-                  )}
-                >
-                  AR
-                </button>
-              </div>
-
               {/* Theme Toggle */}
               <button
                 onClick={toggleTheme}
@@ -118,7 +85,7 @@ export function Navbar() {
               </button>
 
               {/* CTA Button */}
-              <Link href={getLocalizedPath('/enroll', locale)}>
+              <Link href={getLocalizedPath('/enroll', 'en')}>
                 <Button size="sm">{t.nav.enroll}</Button>
               </Link>
             </div>
@@ -145,12 +112,7 @@ export function Navbar() {
           />
 
           {/* Drawer */}
-          <div
-            className={cn(
-              'absolute top-0 h-full w-[85%] max-w-sm bg-white shadow-2xl dark:bg-[#0B0F14]',
-              isArabic ? 'left-0' : 'right-0'
-            )}
-          >
+          <div className="absolute top-0 right-0 h-full w-[85%] max-w-sm bg-white shadow-2xl dark:bg-[#0B0F14]">
             {/* Header */}
             <div className="flex items-center justify-between border-b border-lightGray p-4 dark:border-borderDark">
               <span className="text-base font-semibold text-textPrimary dark:text-textOnDark">
@@ -171,7 +133,7 @@ export function Navbar() {
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
-                    href={getLocalizedPath(link.href, locale)}
+                    href={getLocalizedPath(link.href, 'en')}
                     onClick={() => setMobileMenuOpen(false)}
                     className="rounded-lg px-4 py-3 text-base font-medium text-textPrimary transition-colors hover:bg-lightGray dark:text-textOnDark dark:hover:bg-surfaceDark"
                   >
@@ -181,41 +143,10 @@ export function Navbar() {
               </div>
 
               <div className="mt-auto border-t border-lightGray p-4 dark:border-borderDark">
-                {/* Language */}
-                <div className="mb-4 flex items-center justify-between">
-                  <span className="text-sm font-medium text-textMuted dark:text-textMuted">
-                    {isArabic ? 'اللغة' : 'Language'}
-                  </span>
-                  <div className="flex items-center gap-1 rounded-lg border border-lightGray bg-surfaceLight p-1 dark:border-borderDark dark:bg-surfaceDark">
-                    <button
-                      onClick={() => handleLanguageChange('en')}
-                      className={cn(
-                        'px-3 py-1.5 text-xs font-medium transition-colors',
-                        locale === 'en'
-                          ? 'bg-primary text-white'
-                          : 'text-textMuted hover:text-textPrimary dark:text-textMuted dark:hover:text-textOnDark'
-                      )}
-                    >
-                      EN
-                    </button>
-                    <button
-                      onClick={() => handleLanguageChange('ar')}
-                      className={cn(
-                        'px-3 py-1.5 text-xs font-medium transition-colors',
-                        locale === 'ar'
-                          ? 'bg-primary text-white'
-                          : 'text-textMuted hover:text-textPrimary dark:text-textMuted dark:hover:text-textOnDark'
-                      )}
-                    >
-                      AR
-                    </button>
-                  </div>
-                </div>
-
                 {/* Theme */}
                 <div className="mb-4 flex items-center justify-between">
                   <span className="text-sm font-medium text-textMuted dark:text-textMuted">
-                    {isArabic ? 'المظهر' : 'Theme'}
+                    Theme
                   </span>
                   <button
                     onClick={toggleTheme}
@@ -224,12 +155,12 @@ export function Navbar() {
                     {theme === 'light' ? (
                       <>
                         <Moon className="h-4 w-4" />
-                        <span>{isArabic ? 'داكن' : 'Dark'}</span>
+                        <span>Dark</span>
                       </>
                     ) : (
                       <>
                         <Sun className="h-4 w-4" />
-                        <span>{isArabic ? 'فاتح' : 'Light'}</span>
+                        <span>Light</span>
                       </>
                     )}
                   </button>
@@ -237,7 +168,7 @@ export function Navbar() {
 
                 {/* CTA */}
                 <Link
-                  href={getLocalizedPath('/enroll', locale)}
+                  href={getLocalizedPath('/enroll', 'en')}
                   onClick={() => setMobileMenuOpen(false)}
                   className="block w-full"
                 >
