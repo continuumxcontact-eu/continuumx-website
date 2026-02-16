@@ -8,7 +8,7 @@ export type Session = {
 export const sessions: Session[] = [
  
   {
-    id: 'pbi_beginner',
+    id: 'pbi_beginner_morning',
     courseSlug: 'power-bi-business-intelligence',
     isActive: true,
     label: 'Fri 10:00 AM – 03:00 PM',
