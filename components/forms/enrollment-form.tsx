@@ -12,13 +12,23 @@ import { Input } from '@/components/ui/input'
 import { Select } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 import { Checkbox } from '@/components/ui/checkbox'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 
 export function EnrollmentForm() {
+  // If you want to DISABLE coming-soon courses in the dropdown, set this to true
+  const DISABLE_COMING_SOON_COURSES = false
+
   const { locale } = useLanguage()
   const router = useRouter()
   const searchParams = useSearchParams()
   const t = getTranslations(locale)
+
   const [isPending, startTransition] = useTransition()
   const [errors, setErrors] = useState<Record<string, string[]>>({})
 
@@ -29,13 +39,33 @@ export function EnrollmentForm() {
   // Dynamic sessions
   const [selectedSession, setSelectedSession] = useState('')
 
+  // Build a set of course slugs that have at least 1 ACTIVE session
+  const activeCourseSlugs = useMemo(() => {
+    const set = new Set<string>()
+    sessions.forEach((s) => {
+      if (s.isActive) set.add(s.courseSlug)
+    })
+    return set
+  }, [])
+
+  // Sort courses so AVAILABLE are on top (then keep original order within each group)
+  const sortedCourses = useMemo(() => {
+    return [...courses].sort((a, b) => {
+      const aAvailable = activeCourseSlugs.has(a.slug)
+      const bAvailable = activeCourseSlugs.has(b.slug)
+
+      if (aAvailable === bAvailable) return 0
+      return aAvailable ? -1 : 1
+    })
+  }, [activeCourseSlugs])
+
+  // Only show ACTIVE sessions for the selected course
   const sessionOptions = useMemo(() => {
     if (!selectedCourse) return []
-    return sessions.filter(
-      (s) => s.courseSlug === selectedCourse && s.isActive
-    )
+    return sessions.filter((s) => s.courseSlug === selectedCourse && s.isActive)
   }, [selectedCourse])
 
+  // Reset session when course changes
   useEffect(() => {
     setSelectedSession('')
   }, [selectedCourse])
@@ -45,7 +75,18 @@ export function EnrollmentForm() {
     setErrors({})
 
     const formData = new FormData(e.currentTarget)
-    formData.set('schedule', selectedSession)
+
+    // If no active sessions exist for the course, we still allow submitting interest.
+    // We'll store schedule as TBD.
+    const picked = sessions.find((s) => s.id === selectedSession)
+
+    if (picked) {
+      formData.set('schedule', picked.id)
+      formData.set('scheduleLabel', picked.label)
+    } else {
+      formData.set('schedule', 'TBD')
+      formData.set('scheduleLabel', 'To be announced')
+    }
 
     startTransition(async () => {
       const result = await submitEnrollment(formData)
@@ -61,8 +102,8 @@ export function EnrollmentForm() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{t.forms.enrollment.title}</CardTitle>
-        <CardDescription>
+     {  /* <CardTitle>{t.forms.enrollment.title}</CardTitle>*/}
+        <CardDescription className="text-black leading-relaxed">
           Thank you for your interest in Continuum X professional training programs.
           <br />
           Please fill in the form below to reserve your seat.
@@ -72,14 +113,17 @@ export function EnrollmentForm() {
       </CardHeader>
 
       <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-6">
-
+        <form onSubmit={handleSubmit} className="space-y-6 mt-4">
           {/* Name */}
           <div>
             <label className="mb-2 block text-sm font-medium">
               {t.forms.enrollment.name} *
             </label>
-            <Input name="name" required className={errors.name ? 'border-red-500' : ''} />
+            <Input
+              name="name"
+              required
+              className={errors.name ? 'border-red-500' : ''}
+            />
             {errors.name && (
               <p className="mt-1 text-sm text-red-500">{errors.name[0]}</p>
             )}
@@ -90,7 +134,12 @@ export function EnrollmentForm() {
             <label className="mb-2 block text-sm font-medium">
               {t.forms.enrollment.email} *
             </label>
-            <Input name="email" type="email" required className={errors.email ? 'border-red-500' : ''} />
+            <Input
+              name="email"
+              type="email"
+              required
+              className={errors.email ? 'border-red-500' : ''}
+            />
             {errors.email && (
               <p className="mt-1 text-sm text-red-500">{errors.email[0]}</p>
             )}
@@ -101,7 +150,12 @@ export function EnrollmentForm() {
             <label className="mb-2 block text-sm font-medium">
               {t.forms.enrollment.phone} *
             </label>
-            <Input name="phone" type="tel" required className={errors.phone ? 'border-red-500' : ''} />
+            <Input
+              name="phone"
+              type="tel"
+              required
+              className={errors.phone ? 'border-red-500' : ''}
+            />
             {errors.phone && (
               <p className="mt-1 text-sm text-red-500">{errors.phone[0]}</p>
             )}
@@ -112,7 +166,11 @@ export function EnrollmentForm() {
             <label className="mb-2 block text-sm font-medium">
               {t.forms.enrollment.country} *
             </label>
-            <Input name="country" required className={errors.country ? 'border-red-500' : ''} />
+            <Input
+              name="country"
+              required
+              className={errors.country ? 'border-red-500' : ''}
+            />
             {errors.country && (
               <p className="mt-1 text-sm text-red-500">{errors.country[0]}</p>
             )}
@@ -123,7 +181,11 @@ export function EnrollmentForm() {
             <label className="mb-2 block text-sm font-medium">
               {t.forms.enrollment.background} *
             </label>
-            <Select name="background" required className={errors.background ? 'border-red-500' : ''}>
+            <Select
+              name="background"
+              required
+              className={errors.background ? 'border-red-500' : ''}
+            >
               <option value="">Select...</option>
               <option value="Student">Student</option>
               <option value="Professional">Professional</option>
@@ -141,6 +203,7 @@ export function EnrollmentForm() {
             <label className="mb-2 block text-sm font-medium">
               {t.forms.enrollment.course} *
             </label>
+
             <Select
               name="course"
               required
@@ -149,33 +212,55 @@ export function EnrollmentForm() {
               className={errors.course ? 'border-red-500' : ''}
             >
               <option value="">Select...</option>
-              {courses.map((course) => (
-                <option key={course.slug} value={course.slug}>
-                  {course.title.en}
-                </option>
-              ))}
+
+              {sortedCourses.map((course) => {
+                const available = activeCourseSlugs.has(course.slug)
+                const comingSoon = !available
+                const label = `${course.title.en}${comingSoon ? ' — Coming Soon' : ''}`
+
+                return (
+                  <option
+                    key={course.slug}
+                    value={course.slug}
+                    disabled={DISABLE_COMING_SOON_COURSES ? comingSoon : false}
+                    className={comingSoon ? 'italic text-gray-500' : ''}
+                  >
+                    {label}
+                  </option>
+                )
+              })}
             </Select>
+
             {errors.course && (
               <p className="mt-1 text-sm text-red-500">{errors.course[0]}</p>
             )}
+
+            <p className="mt-2 text-xs text-gray-500">
+              Courses marked as <span className="italic">Coming Soon</span> will open
+              for scheduling once dates are announced.
+            </p>
           </div>
 
           {/* Dynamic Schedule */}
           <div>
             <label className="mb-2 block text-sm font-medium">
-              Course Date / Schedule *
+              Course Date / Schedule {sessionOptions.length > 0 ? '*' : ''}
             </label>
 
             <Select
               name="schedule"
-              required
               value={selectedSession}
               onChange={(e) => setSelectedSession(e.target.value)}
-              disabled={!selectedCourse}
+              disabled={!selectedCourse || sessionOptions.length === 0}
+              required={!!selectedCourse && sessionOptions.length > 0}
               className={errors.schedule ? 'border-red-500' : ''}
             >
               <option value="">
-                {!selectedCourse ? 'Select a course first' : 'Select...'}
+                {!selectedCourse
+                  ? 'Select a course first'
+                  : sessionOptions.length === 0
+                    ? 'No dates available yet'
+                    : 'Select...'}
               </option>
 
               {sessionOptions.map((s) => (
@@ -187,7 +272,8 @@ export function EnrollmentForm() {
 
             {selectedCourse && sessionOptions.length === 0 && (
               <p className="mt-2 text-sm text-gray-500">
-                No dates available for this course yet. We will contact you once the schedule is confirmed.
+                No dates available for this course yet. Submit your interest and we
+                will contact you once the schedule is confirmed.
               </p>
             )}
 
@@ -206,15 +292,19 @@ export function EnrollmentForm() {
 
           {/* Consent */}
           <div className="flex items-start gap-2">
-            <Checkbox name="consent" required />
-            <label className="text-sm">
-              {t.forms.enrollment.consent}
-            </label>
+            <Checkbox
+              name="consent"
+              required
+              className={errors.consent ? 'border-red-500' : ''}
+            />
+            <label className="text-sm">{t.forms.enrollment.consent}</label>
           </div>
 
-          {errors._form && (
-            <p className="text-sm text-red-500">{errors._form[0]}</p>
+          {errors.consent && (
+            <p className="text-sm text-red-500">{errors.consent[0]}</p>
           )}
+
+          {errors._form && <p className="text-sm text-red-500">{errors._form[0]}</p>}
 
           <Button type="submit" disabled={isPending} className="w-full">
             {isPending ? 'Submitting...' : t.forms.enrollment.submit}
