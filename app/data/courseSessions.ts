@@ -9,13 +9,13 @@ export const sessions: Session[] = [
  
   {
     id: 'Ramdan-> Sat 12:30 PM – 16:30 PM / After Ramdan-> Sat 10:00 AM – 14:00 PM',
-    courseSlug: 'Power BI Beginner',
+    courseSlug: 'power-bi-business-intelligence',
     isActive: true,
     label: 'Ramdan-> Sat 12:30 PM – 16:30 PM / After Ramdan-> Sat 10:00 AM – 14:00 PM',
   },
   {
     id: 'Ramdan-> Sat 19:30 PM – 00:30 AM / After Ramdan-> Sat 18:00 PM – 22:00 PM',
-    courseSlug: 'Power BI Beginner',
+    courseSlug: 'power-bi-business-intelligence',
     isActive: true,
     label: 'Ramdan-> Sat 19:30 PM – 00:30 AM / After Ramdan-> Sat 18:00 PM – 22:00 PM',
   },
