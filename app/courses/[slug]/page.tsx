@@ -7,6 +7,20 @@ import { Container } from '@/components/ui/container'
 import { getTranslations } from '@/lib/i18n'
 import { getCourse, courses } from '@/lib/courses'
 
+async function getUsdToEgpRate(): Promise<number | null> {
+  try {
+    // ✅ Works on Vercel (use full site URL)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/fx`, {
+      next: { revalidate: 60 * 60 * 24 }, // 24 hours
+    })
+    if (!res.ok) return null
+    const data = await res.json()
+    return typeof data?.rate === 'number' ? data.rate : null
+  } catch {
+    return null
+  }
+}
+
 export async function generateStaticParams() {
   return courses.map((course) => ({
     slug: course.slug,
@@ -27,7 +41,7 @@ export async function generateMetadata({
   }
 }
 
-export default function CourseDetailPage({
+export default async function CourseDetailPage({
   params,
 }: {
   params: { slug: string }
@@ -39,10 +53,12 @@ export default function CourseDetailPage({
     notFound()
   }
 
+  const rate = await getUsdToEgpRate()
+  const egp = course.priceUSD && rate ? Math.round(course.priceUSD * rate) : null
+
   return (
     <Container className="py-20">
       <div className="mx-auto max-w-6xl">
-
         {/* Back link */}
         <div className="mb-8">
           <Link
@@ -76,6 +92,39 @@ export default function CourseDetailPage({
               {course.format.en}
             </span>
           </div>
+
+          {/* ✅ PRICE (Old crossed + New) */}
+          {(course.priceUSD || course.priceNote?.en) && (
+            <div className="mt-5">
+              <div className="flex flex-wrap items-center gap-3">
+                {course.oldPriceUSD && (
+                  <span className="text-red-700 line-through font-semibold text-lg">
+                    ${course.oldPriceUSD}
+                  </span>
+                )}
+
+                {course.priceUSD && (
+                  <span className="text-black dark:text-white font-bold text-3xl">
+                    ${course.priceUSD}
+                  </span>
+                )}
+
+                {course.priceNote?.en && (
+                  <span className="text-sm text-gray-600 dark:text-gray-300">
+                    {course.priceNote.en}
+                  </span>
+                )}
+              </div>
+
+              {/* ✅ EGP Equivalent */}
+              {egp && (
+                <div className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+                  ≈ <span className="font-semibold">{egp.toLocaleString()} EGP</span>
+                  <span className="ml-2 text-xs text-gray-500">(auto-updated daily)</span>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Overview */}
@@ -83,7 +132,6 @@ export default function CourseDetailPage({
           <h2 className="mb-4 text-2xl font-semibold text-textPrimary dark:text-textOnDark">
             {t.courses.overview}
           </h2>
-          {/* Overview text black/white (not muted) */}
           <p className="text-lg text-black dark:text-white">
             {course.overview.en}
           </p>
@@ -139,25 +187,24 @@ export default function CourseDetailPage({
             <CardContent>
               <div className="flex flex-wrap gap-2">
                 {course.tools.en.map((tool, i) => (
-                 <span
-                 key={i}
-                 className="
-                   rounded-full
-                   border
-                   border-primary/40
-                   bg-primary/10
-                   px-3 py-1
-                   text-sm
-                   font-medium
-                   text-primary
-                   dark:border-primary/60
-                   dark:bg-primary/30
-                   dark:text-white
-                 "
-               >
-                 {tool}
-               </span>
-               
+                  <span
+                    key={i}
+                    className="
+                      rounded-full
+                      border
+                      border-primary/40
+                      bg-primary/10
+                      px-3 py-1
+                      text-sm
+                      font-medium
+                      text-primary
+                      dark:border-primary/60
+                      dark:bg-primary/30
+                      dark:text-white
+                    "
+                  >
+                    {tool}
+                  </span>
                 ))}
               </div>
             </CardContent>
@@ -201,7 +248,6 @@ export default function CourseDetailPage({
             <Button size="lg">{t.courses.enroll}</Button>
           </Link>
         </div>
-
       </div>
     </Container>
   )

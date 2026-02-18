@@ -1,6 +1,12 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Container } from '@/components/ui/container'
 import { getTranslations } from '@/lib/i18n'
 import { ArrowRight } from 'lucide-react'
@@ -24,7 +30,8 @@ export default function CoursesPage() {
           {t.courses.title}
         </h1>
         <p className="text-lg text-black dark:text-white">
-          Professional certification programs to upskill your team and advance your career.
+          Professional certification programs to upskill your team and advance your
+          career.
         </p>
       </div>
 
@@ -46,6 +53,26 @@ export default function CoursesPage() {
               <CardDescription className="text-black dark:text-white">
                 <span className="block font-semibold">{d.level.en}</span>
                 <span className="block font-semibold">{d.duration.en}</span>
+
+                {/* ✅ DIPLOMA PRICE (will show only if you add price fields in Diploma data) */}
+                {'priceUSD' in d && (d as any).priceUSD && (
+                  <div className="mt-2 flex items-center gap-2">
+                    {(d as any).oldPriceUSD && (
+                      <span className="text-red-700 line-through font-semibold">
+                        ${(d as any).oldPriceUSD}
+                      </span>
+                    )}
+                    <span className="text-black dark:text-white font-bold text-lg">
+                      ${(d as any).priceUSD}
+                    </span>
+                  </div>
+                )}
+
+                {'priceNote' in d && (d as any).priceNote?.en && (
+                  <span className="mt-1 block text-xs text-gray-600 dark:text-gray-300">
+                    {(d as any).priceNote.en}
+                  </span>
+                )}
               </CardDescription>
             </CardHeader>
 
@@ -85,6 +112,26 @@ export default function CoursesPage() {
               <CardDescription className="text-black dark:text-white">
                 <span className="block font-semibold">{c.level.en}</span>
                 <span className="block font-semibold">{c.duration.en}</span>
+
+                {/* ✅ COURSE PRICE */}
+                {c.priceUSD && (
+                  <div className="mt-2 flex items-center gap-2">
+                    {c.oldPriceUSD && (
+                      <span className="text-red-700 line-through font-semibold">
+                        ${c.oldPriceUSD}
+                      </span>
+                    )}
+                    <span className="text-black dark:text-white font-bold text-lg">
+                      ${c.priceUSD}
+                    </span>
+                  </div>
+                )}
+
+                {c.priceNote?.en && (
+                  <span className="mt-1 block text-xs text-gray-600 dark:text-gray-300">
+                    {c.priceNote.en}
+                  </span>
+                )}
               </CardDescription>
             </CardHeader>
 
