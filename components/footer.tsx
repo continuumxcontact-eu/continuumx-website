@@ -141,7 +141,7 @@ export function Footer() {
 
               {/* Instagram */}
               <a
-                href="https://www.instagram.com/continuumx"
+                href="https://www.instagram.com/continuumx.ai?igsh=MWpsMHlsZTNjajAyeg=="
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -152,7 +152,7 @@ export function Footer() {
 
               {/* Facebook */}
               <a
-                href="https://www.facebook.com/continuumx"
+                href="https://www.facebook.com/profile.php?id=61588291682800"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
