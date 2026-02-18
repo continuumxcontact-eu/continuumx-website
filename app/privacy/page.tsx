@@ -19,7 +19,7 @@ export default function PrivacyPage() {
         <p className="mb-8 text-sm text-textMuted dark:text-textMuted">
           {t.legal.privacy.lastUpdated}
         </p>
-        <div className="prose prose-lg max-w-none text-textMuted dark:prose-invert dark:text-textMuted">
+        <div className="prose prose-lg max-w-none text-black dark:text-white leading-relaxed">
           {t.legal.privacy.content.map((paragraph, i) => (
             <p key={i} className="mb-4 leading-relaxed">
               {paragraph}

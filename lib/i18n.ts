@@ -154,15 +154,27 @@ export const translations = {
         lastUpdated: 'Last updated: February 2026',
         content: [
           'Continuum X OÜ is committed to protecting your privacy and handling your personal data responsibly.',
-          'We may collect the following information during registration: full name, email address, phone number, course selection, and payment details through secure payment providers.',
-          'Your information is used to process course registrations, send updates and materials, issue certificates, provide support, and improve our services.',
-          'We do not sell or rent your personal data to third parties. Your data is stored securely and accessed only by authorized personnel.',
-          'We may use trusted third-party services for payments, email delivery, and analytics. These providers are required to protect your data under applicable laws.',
-          'By enrolling, you agree to receive course-related communications. You may unsubscribe from non-essential messages at any time.',
-          'Your data is retained only as long as necessary for educational, legal, or administrative purposes.',
-          'You have the right to access, correct, or request deletion of your personal data. You may also withdraw consent for data processing at any time.',
-          'For any privacy-related inquiries, please contact: contact@continuumx-ai.com',
+        
+          'Information We Collect:',
+          'We collect your full name, email address, phone number, course selection, and payment details through secure providers.',
+        
+          'How We Use Your Information:',
+          'Your data is used to process registrations, send course updates, issue certificates, provide support, and improve our services.',
+        
+          'Data Protection:',
+          'We do not sell or rent your personal data. Your information is stored securely and accessed only by authorized personnel.',
+        
+          'Third-Party Services:',
+          'We may use trusted providers for payments, email delivery, and analytics. These providers must protect your data under applicable laws.',
+        
+          'Your Rights:',
+          'You have the right to access, correct, or request deletion of your personal data at any time.',
+        
+          'Contact:',
+          'For any privacy-related inquiries, contact: contact@continuumx-ai.com',
         ],
+        
+        
       },
       terms: {
         title: 'Terms of Service',
