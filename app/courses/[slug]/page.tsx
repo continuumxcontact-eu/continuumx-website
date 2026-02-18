@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import { headers } from 'next/headers'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Container } from '@/components/ui/container'
@@ -9,11 +10,26 @@ import { getCourse, courses } from '@/lib/courses'
 
 /* ==============================
    USD → EGP RATE (Daily update)
+   Works on Localhost + Vercel
 ============================== */
+function getBaseUrlFromHeaders() {
+  const h = headers()
+  const host =
+    h.get('x-forwarded-host') ||
+    h.get('host') ||
+    'localhost:3000'
+
+  const proto =
+    h.get('x-forwarded-proto') || (host.includes('localhost') ? 'http' : 'https')
+
+  return `${proto}://${host}`
+}
+
 async function getUsdToEgpRate(): Promise<number | null> {
   try {
-    const res = await fetch('/api/fx', {
-      next: { revalidate: 60 * 60 * 24 }, // cache for 24 hours
+    const baseUrl = getBaseUrlFromHeaders()
+    const res = await fetch(`${baseUrl}/api/fx`, {
+      next: { revalidate: 60 * 60 * 24 }, // 24 hours
     })
     if (!res.ok) return null
     const data = await res.json()
@@ -51,9 +67,7 @@ export default async function CourseDetailPage({
   const course = getCourse(params.slug)
   const t = getTranslations('en')
 
-  if (!course) {
-    notFound()
-  }
+  if (!course) notFound()
 
   const rate = await getUsdToEgpRate()
   const egp =
@@ -78,7 +92,6 @@ export default async function CourseDetailPage({
             {course.title.en}
           </h1>
 
-          {/* Label bold + value normal */}
           <div className="flex flex-wrap gap-4 text-sm text-black dark:text-white">
             <span>
               <span className="font-bold">{t.courses.level}:</span>{' '}
@@ -122,13 +135,8 @@ export default async function CourseDetailPage({
               {/* EGP Equivalent */}
               {egp && (
                 <div className="mt-2 text-sm text-gray-700 dark:text-gray-300">
-                  ≈{' '}
-                  <span className="font-semibold">
-                    {egp.toLocaleString()} EGP
-                  </span>
-                  <span className="ml-2 text-xs text-gray-500">
-                    (auto-updated daily)
-                  </span>
+                  ≈ <span className="font-semibold">{egp.toLocaleString()} EGP</span>
+                  <span className="ml-2 text-xs text-gray-500">(auto-updated daily)</span>
                 </div>
               )}
             </div>
@@ -147,7 +155,6 @@ export default async function CourseDetailPage({
 
         {/* Main Content */}
         <div className="grid gap-8">
-          {/* Who it's for */}
           <Card>
             <CardHeader className="pb-4">
               <CardTitle className="text-black dark:text-white">
@@ -166,7 +173,6 @@ export default async function CourseDetailPage({
             </CardContent>
           </Card>
 
-          {/* What you'll learn */}
           <Card>
             <CardHeader className="pb-4">
               <CardTitle className="text-black dark:text-white">
@@ -185,7 +191,6 @@ export default async function CourseDetailPage({
             </CardContent>
           </Card>
 
-          {/* Tools */}
           <Card>
             <CardHeader className="pb-4">
               <CardTitle className="text-black dark:text-white">
@@ -206,7 +211,6 @@ export default async function CourseDetailPage({
             </CardContent>
           </Card>
 
-          {/* Outcomes */}
           <Card>
             <CardHeader className="pb-4">
               <CardTitle className="text-black dark:text-white">
