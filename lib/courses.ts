@@ -41,7 +41,7 @@ export const courses: Course[] = [
     title: { en: 'Power BI Beginner' },
     level: { en: 'Beginner (Zero-friendly)' },
     duration: { en: '30 hours' },
-    format: { en: 'Online/Hybrid' },
+    format: { en: 'Online' },
 
     // ✅ Price display (old + new)
     oldPriceUSD: 150,
@@ -145,7 +145,7 @@ export const courses: Course[] = [
     title: { en: 'SQL for Data Analysis' },
     level: { en: 'Beginner → Intermediate' },
     duration: { en: '30 hours' },
-    format: { en: 'Online/Hybrid' },
+    format: { en: 'Online' },
 
     oldPriceUSD: 150,
     priceUSD: 120,
@@ -299,7 +299,7 @@ export const courses: Course[] = [
     title: { en: 'Python Basics for Analysts' },
     level: { en: 'Absolute Beginner' },
     duration: { en: '30 hours' },
-    format: { en: 'Online/Hybrid' },
+    format: { en: 'Online' },
 
     oldPriceUSD: 150,
     priceUSD: 120,
