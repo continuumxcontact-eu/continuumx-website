@@ -21,8 +21,8 @@ import {
 } from '@/components/ui/card'
 
 export function EnrollmentForm() {
-  // If you want to DISABLE coming-soon courses in the dropdown, set this to true
-  const DISABLE_COMING_SOON_COURSES = false
+  // ✅ If you want to DISABLE coming-soon courses in the dropdown, set this to true
+  const DISABLE_COMING_SOON_COURSES = true
 
   const { locale } = useLanguage()
   const router = useRouter()
@@ -47,6 +47,14 @@ export function EnrollmentForm() {
     })
     return set
   }, [])
+
+  // ✅ NEW: If URL preselects a Coming-Soon course, clear it
+  // (so it behaves like before and doesn't "stick")
+  useEffect(() => {
+    if (selectedCourse && !activeCourseSlugs.has(selectedCourse)) {
+      setSelectedCourse('')
+    }
+  }, [selectedCourse, activeCourseSlugs])
 
   // Sort courses so AVAILABLE are on top (then keep original order within each group)
   const sortedCourses = useMemo(() => {
@@ -102,7 +110,7 @@ export function EnrollmentForm() {
   return (
     <Card>
       <CardHeader>
-     {  /* <CardTitle>{t.forms.enrollment.title}</CardTitle>*/}
+        { /* <CardTitle>{t.forms.enrollment.title}</CardTitle> */ }
         <CardDescription className="text-black leading-relaxed">
           Thank you for your interest in Continuum X professional training programs.
           <br />
