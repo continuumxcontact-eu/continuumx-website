@@ -296,7 +296,7 @@ export const courses: Course[] = [
   -------------------------------------------------- */
   {
     slug: 'python-basics-for-analysts',
-    title: { en: 'Python Basics for Analysts' },
+    title: { en: 'Python Basics' },
     level: { en: 'Absolute Beginner' },
     duration: { en: '30 hours' },
     format: { en: 'Online' },
