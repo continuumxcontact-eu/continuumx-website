@@ -20,6 +20,20 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 
+/* ===============================
+   Fetch USD → EGP rate
+================================ */
+async function fetchUsdToEgpRate(): Promise<number | null> {
+  try {
+    const res = await fetch('/api/fx', { cache: 'no-store' })
+    if (!res.ok) return null
+    const data = await res.json()
+    return typeof data?.rate === 'number' ? data.rate : null
+  } catch {
+    return null
+  }
+}
+
 export function EnrollmentForm() {
   // ✅ If you want to DISABLE coming-soon courses in the dropdown, set this to true
   const DISABLE_COMING_SOON_COURSES = true
@@ -39,6 +53,22 @@ export function EnrollmentForm() {
   // Dynamic sessions
   const [selectedSession, setSelectedSession] = useState('')
 
+  // ✅ NEW: FX rate for USD → EGP
+  const [fxRate, setFxRate] = useState<number | null>(null)
+
+  /* ===============================
+     Load exchange rate once
+  ================================= */
+  useEffect(() => {
+    let mounted = true
+    fetchUsdToEgpRate().then((r) => {
+      if (mounted) setFxRate(r)
+    })
+    return () => {
+      mounted = false
+    }
+  }, [])
+
   // Build a set of course slugs that have at least 1 ACTIVE session
   const activeCourseSlugs = useMemo(() => {
     const set = new Set<string>()
@@ -48,7 +78,7 @@ export function EnrollmentForm() {
     return set
   }, [])
 
-  // ✅ NEW: If URL preselects a Coming-Soon course, clear it
+  // ✅ If URL preselects a Coming-Soon course, clear it
   // (so it behaves like before and doesn't "stick")
   useEffect(() => {
     if (selectedCourse && !activeCourseSlugs.has(selectedCourse)) {
@@ -77,6 +107,18 @@ export function EnrollmentForm() {
   useEffect(() => {
     setSelectedSession('')
   }, [selectedCourse])
+
+  /* ===============================
+     Selected course data (for pricing)
+  ================================= */
+  const selectedCourseData = useMemo(() => {
+    return courses.find((c) => c.slug === selectedCourse) || null
+  }, [selectedCourse])
+
+  const egpEquivalent = useMemo(() => {
+    if (!selectedCourseData?.priceUSD || !fxRate) return null
+    return Math.round(selectedCourseData.priceUSD * fxRate)
+  }, [selectedCourseData, fxRate])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -247,6 +289,56 @@ export function EnrollmentForm() {
               Courses marked as <span className="italic">Coming Soon</span> will open
               for scheduling once dates are announced.
             </p>
+
+            {/* ✅ PRICE SUMMARY (Added) */}
+            {selectedCourseData &&
+              (selectedCourseData.priceUSD || selectedCourseData.priceNote?.en) && (
+                <div className="mt-4 rounded-lg border bg-gray-50 p-4 dark:bg-gray-800">
+                  <div className="flex flex-wrap items-center gap-3">
+                    {selectedCourseData.oldPriceUSD && (
+                      <span className="text-red-700 line-through font-semibold text-base">
+                        ${selectedCourseData.oldPriceUSD}
+                      </span>
+                    )}
+
+                    {selectedCourseData.priceUSD && (
+                      <span className="text-black dark:text-white font-bold text-2xl">
+                        ${selectedCourseData.priceUSD}
+                      </span>
+                    )}
+
+                    {selectedCourseData.priceNote?.en && (
+                      <span className="text-sm text-gray-600 dark:text-gray-300">
+                        {selectedCourseData.priceNote.en}
+                      </span>
+                    )}
+                  </div>
+
+                  {selectedCourseData.priceUSD && (
+                    <div className="mt-2 text-sm text-gray-700 dark:text-gray-300">
+                      {egpEquivalent ? (
+                        <>
+                          ≈{' '}
+                          <span className="font-semibold">
+                            {egpEquivalent.toLocaleString()} EGP
+                          </span>
+                          <span className="ml-2 text-xs text-gray-500">
+                            (auto-updated daily)
+                          </span>
+                        </>
+                      ) : (
+                        <span className="text-xs text-gray-500">
+                          Loading EGP equivalent…
+                        </span>
+                      )}
+                    </div>
+                  )}
+
+                  <p className="mt-2 text-xs text-gray-500">
+                    Final amount may vary slightly based on exchange rate at payment time.
+                  </p>
+                </div>
+              )}
           </div>
 
           {/* Dynamic Schedule */}
