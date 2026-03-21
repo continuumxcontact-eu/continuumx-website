@@ -11,6 +11,11 @@ export interface Course {
   learn: { en: string[] }
   tools: { en: string[] }
   outcomes: { en: string[] }
+
+  // ✅ Pricing (optional: supports "Coming soon")
+  priceEUR?: number
+  oldPriceEUR?: number
+  priceNote?: { en: string } // e.g., "Launch Offer"
 }
 
 export interface Diploma {
@@ -36,7 +41,12 @@ export const courses: Course[] = [
     title: { en: 'Power BI Beginner' },
     level: { en: 'Beginner (Zero-friendly)' },
     duration: { en: '30 hours' },
-    format: { en: 'Online/Hybrid' },
+    format: { en: 'Online' },
+
+    // ✅ Price display (old + new)
+    oldPriceEUR: 150,
+    priceEUR: 120,
+    priceNote: { en: 'Launch Offer' },
 
     overview: {
       en: 'A highly practical introduction that starts with what data and data analysis mean in real business contexts, then focuses on visualization and dashboard thinking. Learn how Power BI fits into the BI workflow and build interactive reports—without heavy DAX or complex modeling.',
@@ -86,6 +96,10 @@ export const courses: Course[] = [
     duration: { en: '30 hours' },
     format: { en: 'Online/Hybrid' },
 
+    oldPriceEUR: 150,
+    priceEUR: 120,
+    priceNote: { en: 'Launch Offer' },
+
     overview: {
       en: 'Build strong analysis fundamentals using Excel: clean data, use formulas and PivotTables, and create clear KPI summaries—perfect preparation for SQL and Power BI.',
     },
@@ -131,7 +145,11 @@ export const courses: Course[] = [
     title: { en: 'SQL for Data Analysis' },
     level: { en: 'Beginner → Intermediate' },
     duration: { en: '30 hours' },
-    format: { en: 'Online/Hybrid' },
+    format: { en: 'Online' },
+
+    oldPriceEUR: 150,
+    priceEUR: 120,
+    priceNote: { en: 'Launch Offer' },
 
     overview: {
       en: 'Learn SQL the way analysts use it: extract data, validate quality, and answer business questions. Focus is on analytics—not database administration.',
@@ -181,6 +199,10 @@ export const courses: Course[] = [
     duration: { en: '30 hours' },
     format: { en: 'Online/Hybrid' },
 
+    oldPriceEUR: 150,
+    priceEUR: 120,
+    priceNote: { en: 'Launch Offer' },
+
     overview: {
       en: 'Build professional BI reports: strong data models, practical Power Query transformations, and reliable DAX measures for KPI-driven reporting.',
     },
@@ -228,6 +250,10 @@ export const courses: Course[] = [
     duration: { en: '30 hours' },
     format: { en: 'Online/Hybrid' },
 
+    oldPriceEUR: 150,
+    priceEUR: 120,
+    priceNote: { en: 'Launch Offer' },
+
     overview: {
       en: 'Practical statistics for analysts: interpret KPIs, understand variability, analyze relationships, and make basic data-driven conclusions.',
     },
@@ -270,10 +296,14 @@ export const courses: Course[] = [
   -------------------------------------------------- */
   {
     slug: 'python-basics-for-analysts',
-    title: { en: 'Python Basics for Analysts' },
+    title: { en: 'Python Basics' },
     level: { en: 'Absolute Beginner' },
     duration: { en: '30 hours' },
-    format: { en: 'Online/Hybrid' },
+    format: { en: 'Online' },
+
+    oldPriceEUR: 150,
+    priceEUR: 120,
+    priceNote: { en: 'Launch Offer' },
 
     overview: {
       en: 'Start from zero and learn programming fundamentals with Python. Focus on problem-solving and clean code to prepare for Python-based data analysis.',
@@ -322,6 +352,10 @@ export const courses: Course[] = [
     duration: { en: '30 hours' },
     format: { en: 'Online/Hybrid' },
 
+    oldPriceEUR: 150,
+    priceEUR: 120,
+    priceNote: { en: 'Launch Offer' },
+
     overview: {
       en: 'Analyze real datasets end-to-end using Python. Clean, explore, and visualize data with Pandas and NumPy, then communicate insights in a clear reporting style.',
     },
@@ -368,6 +402,10 @@ export const courses: Course[] = [
     level: { en: 'Advanced' },
     duration: { en: '30 hours' },
     format: { en: 'Online/Hybrid' },
+
+    oldPriceEUR: 220,
+    priceEUR: 150,
+    priceNote: { en: 'Launch Offer' },
 
     overview: {
       en: 'A capstone-style advanced course that integrates the diploma skills. Build a production-ready BI solution with advanced DAX, optimized performance, and a portfolio-grade final dashboard.',
@@ -416,7 +454,10 @@ export const courses: Course[] = [
     duration: { en: '' },
     format: { en: '' },
 
-    overview: { en: 'Comming soon.' }, // keeping same text as on website :contentReference[oaicite:1]{index=1}
+    // ✅ No price yet (Coming soon)
+    priceNote: { en: 'Coming soon.' },
+
+    overview: { en: 'Comming soon.' }, // keeping same text as on website
 
     whoFor: {
       en: [
