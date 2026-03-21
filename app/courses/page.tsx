@@ -17,10 +17,7 @@ import { courses, diplomas } from '../../lib/courses'
 export default function CoursesPage() {
   const t = getTranslations('en')
 
-  // ✅ Collect all course slugs included in ANY diploma
   const diplomaCourseSlugs = new Set(diplomas.flatMap((d) => d.courses))
-
-  // ✅ Keep only courses NOT included in diplomas
   const standaloneCourses = courses.filter((c) => !diplomaCourseSlugs.has(c.slug))
 
   return (
@@ -36,7 +33,6 @@ export default function CoursesPage() {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {/* ✅ DIPLOMAS FIRST */}
         {diplomas.map((d) => (
           <Card
             key={d.slug}
@@ -54,16 +50,15 @@ export default function CoursesPage() {
                 <span className="block font-semibold">{d.level.en}</span>
                 <span className="block font-semibold">{d.duration.en}</span>
 
-                {/* ✅ DIPLOMA PRICE (will show only if you add price fields in Diploma data) */}
-                {'priceUSD' in d && (d as any).priceUSD && (
+                {'priceEUR' in d && (d as any).priceEUR && (
                   <div className="mt-2 flex items-center gap-2">
-                    {(d as any).oldPriceUSD && (
+                    {(d as any).oldPriceEUR && (
                       <span className="text-red-700 line-through font-semibold">
-                        ${(d as any).oldPriceUSD}
+                        €{(d as any).oldPriceEUR}
                       </span>
                     )}
                     <span className="text-black dark:text-white font-bold text-lg">
-                      ${(d as any).priceUSD}
+                      €{(d as any).priceEUR}
                     </span>
                   </div>
                 )}
@@ -81,8 +76,6 @@ export default function CoursesPage() {
                 {d.overview.en}
               </p>
 
-              {/* ✅ Removed note from list page (show it only inside diploma details page) */}
-
               <div className="mt-auto">
                 <Link href={`/diplomas/${d.slug}`}>
                   <Button variant="outline" className="w-full group">
@@ -95,7 +88,6 @@ export default function CoursesPage() {
           </Card>
         ))}
 
-        {/* ✅ STANDALONE COURSES ONLY (NOT IN DIPLOMAS) */}
         {standaloneCourses.map((c) => (
           <Card
             key={c.slug}
@@ -113,16 +105,15 @@ export default function CoursesPage() {
                 <span className="block font-semibold">{c.level.en}</span>
                 <span className="block font-semibold">{c.duration.en}</span>
 
-                {/* ✅ COURSE PRICE */}
-                {c.priceUSD && (
+                {c.priceEUR && (
                   <div className="mt-2 flex items-center gap-2">
-                    {c.oldPriceUSD && (
+                    {c.oldPriceEUR && (
                       <span className="text-red-700 line-through font-semibold">
-                        ${c.oldPriceUSD}
+                        €{c.oldPriceEUR}
                       </span>
                     )}
                     <span className="text-black dark:text-white font-bold text-lg">
-                      ${c.priceUSD}
+                      €{c.priceEUR}
                     </span>
                   </div>
                 )}

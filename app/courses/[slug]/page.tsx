@@ -9,7 +9,7 @@ import { getTranslations } from '@/lib/i18n'
 import { getCourse, courses } from '@/lib/courses'
 
 /* ==============================
-   USD → EGP RATE (Daily update)
+   EUR → EGP RATE (Daily update)
    Works on Localhost + Vercel
 ============================== */
 function getBaseUrlFromHeaders() {
@@ -25,13 +25,15 @@ function getBaseUrlFromHeaders() {
   return `${proto}://${host}`
 }
 
-async function getUsdToEgpRate(): Promise<number | null> {
+async function getEuroToEgpRate(): Promise<number | null> {
   try {
     const baseUrl = getBaseUrlFromHeaders()
     const res = await fetch(`${baseUrl}/api/fx`, {
       next: { revalidate: 60 * 60 * 24 }, // 24 hours
     })
+
     if (!res.ok) return null
+
     const data = await res.json()
     return typeof data?.rate === 'number' ? data.rate : null
   } catch {
@@ -51,6 +53,7 @@ export async function generateMetadata({
   params: { slug: string }
 }): Promise<Metadata> {
   const course = getCourse(params.slug)
+  console.log('COURSE DATA:', course)
   if (!course) return {}
 
   return {
@@ -69,9 +72,11 @@ export default async function CourseDetailPage({
 
   if (!course) notFound()
 
-  const rate = await getUsdToEgpRate()
+  const rate = await getEuroToEgpRate()
   const egp =
-    course.priceUSD && rate ? Math.round(course.priceUSD * rate) : null
+    course.priceEUR != null && rate != null
+      ? Math.round(course.priceEUR * rate)
+      : null
 
   return (
     <Container className="py-20">
@@ -110,18 +115,18 @@ export default async function CourseDetailPage({
           </div>
 
           {/* PRICE */}
-          {(course.priceUSD || course.priceNote?.en) && (
+          {(course.priceEUR != null || course.priceNote?.en) && (
             <div className="mt-5">
               <div className="flex flex-wrap items-center gap-3">
-                {course.oldPriceUSD && (
+                {course.oldPriceEUR != null && (
                   <span className="text-red-700 line-through font-semibold text-lg">
-                    ${course.oldPriceUSD}
+                    €{course.oldPriceEUR}
                   </span>
                 )}
 
-                {course.priceUSD && (
+                {course.priceEUR != null && (
                   <span className="text-black dark:text-white font-bold text-3xl">
-                    ${course.priceUSD}
+                    €{course.priceEUR}
                   </span>
                 )}
 
@@ -133,10 +138,12 @@ export default async function CourseDetailPage({
               </div>
 
               {/* EGP Equivalent */}
-              {egp && (
+              {egp != null && (
                 <div className="mt-2 text-sm text-gray-700 dark:text-gray-300">
                   ≈ <span className="font-semibold">{egp.toLocaleString()} EGP</span>
-                  <span className="ml-2 text-xs text-gray-500">(auto-updated daily)</span>
+                  <span className="ml-2 text-xs text-gray-500">
+                    (auto-updated daily)
+                  </span>
                 </div>
               )}
             </div>

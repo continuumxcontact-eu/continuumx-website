@@ -13,8 +13,8 @@ export interface Course {
   outcomes: { en: string[] }
 
   // ✅ Pricing (optional: supports "Coming soon")
-  priceUSD?: number
-  oldPriceUSD?: number
+  priceEUR?: number
+  oldPriceEUR?: number
   priceNote?: { en: string } // e.g., "Launch Offer"
 }
 
@@ -44,8 +44,8 @@ export const courses: Course[] = [
     format: { en: 'Online' },
 
     // ✅ Price display (old + new)
-    oldPriceUSD: 150,
-    priceUSD: 120,
+    oldPriceEUR: 150,
+    priceEUR: 120,
     priceNote: { en: 'Launch Offer' },
 
     overview: {
@@ -96,8 +96,8 @@ export const courses: Course[] = [
     duration: { en: '30 hours' },
     format: { en: 'Online/Hybrid' },
 
-    oldPriceUSD: 150,
-    priceUSD: 120,
+    oldPriceEUR: 150,
+    priceEUR: 120,
     priceNote: { en: 'Launch Offer' },
 
     overview: {
@@ -147,8 +147,8 @@ export const courses: Course[] = [
     duration: { en: '30 hours' },
     format: { en: 'Online' },
 
-    oldPriceUSD: 150,
-    priceUSD: 120,
+    oldPriceEUR: 150,
+    priceEUR: 120,
     priceNote: { en: 'Launch Offer' },
 
     overview: {
@@ -199,8 +199,8 @@ export const courses: Course[] = [
     duration: { en: '30 hours' },
     format: { en: 'Online/Hybrid' },
 
-    oldPriceUSD: 150,
-    priceUSD: 120,
+    oldPriceEUR: 150,
+    priceEUR: 120,
     priceNote: { en: 'Launch Offer' },
 
     overview: {
@@ -250,8 +250,8 @@ export const courses: Course[] = [
     duration: { en: '30 hours' },
     format: { en: 'Online/Hybrid' },
 
-    oldPriceUSD: 150,
-    priceUSD: 120,
+    oldPriceEUR: 150,
+    priceEUR: 120,
     priceNote: { en: 'Launch Offer' },
 
     overview: {
@@ -301,8 +301,8 @@ export const courses: Course[] = [
     duration: { en: '30 hours' },
     format: { en: 'Online' },
 
-    oldPriceUSD: 150,
-    priceUSD: 120,
+    oldPriceEUR: 150,
+    priceEUR: 120,
     priceNote: { en: 'Launch Offer' },
 
     overview: {
@@ -352,8 +352,8 @@ export const courses: Course[] = [
     duration: { en: '30 hours' },
     format: { en: 'Online/Hybrid' },
 
-    oldPriceUSD: 150,
-    priceUSD: 120,
+    oldPriceEUR: 150,
+    priceEUR: 120,
     priceNote: { en: 'Launch Offer' },
 
     overview: {
@@ -403,8 +403,8 @@ export const courses: Course[] = [
     duration: { en: '30 hours' },
     format: { en: 'Online/Hybrid' },
 
-    oldPriceUSD: 220,
-    priceUSD: 150,
+    oldPriceEUR: 220,
+    priceEUR: 150,
     priceNote: { en: 'Launch Offer' },
 
     overview: {

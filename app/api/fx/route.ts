@@ -4,7 +4,7 @@ export const revalidate = 60 * 60 * 24 // 24 hours
 
 export async function GET() {
   try {
-    const res = await fetch('https://open.er-api.com/v6/latest/USD', {
+    const res = await fetch('https://open.er-api.com/v6/latest/EUR', {
       next: { revalidate },
     })
 
@@ -20,7 +20,7 @@ export async function GET() {
     }
 
     return NextResponse.json({
-      base: 'USD',
+      base: 'EUR',
       quote: 'EGP',
       rate,
     })
