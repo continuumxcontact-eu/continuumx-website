@@ -45,7 +45,7 @@ export const courses: Course[] = [
 
     // ✅ Price display (old + new)
     oldPriceEUR: 150,
-    priceEUR: 120,
+    priceEUR: 110,
     priceNote: { en: 'Launch Offer' },
 
     overview: {
