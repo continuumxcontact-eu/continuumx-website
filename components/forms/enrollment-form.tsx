@@ -21,9 +21,9 @@ import {
 } from '@/components/ui/card'
 
 /* ===============================
-   Fetch USD → EGP rate
+   Fetch EUR → EGP rate
 ================================ */
-async function fetchUsdToEgpRate(): Promise<number | null> {
+async function fetchEURToEgpRate(): Promise<number | null> {
   try {
     const res = await fetch('/api/fx', { cache: 'no-store' })
     if (!res.ok) return null
@@ -53,7 +53,7 @@ export function EnrollmentForm() {
   // Dynamic sessions
   const [selectedSession, setSelectedSession] = useState('')
 
-  // ✅ NEW: FX rate for USD → EGP
+  // ✅ NEW: FX rate for EUR → EGP
   const [fxRate, setFxRate] = useState<number | null>(null)
 
   /* ===============================
@@ -61,7 +61,7 @@ export function EnrollmentForm() {
   ================================= */
   useEffect(() => {
     let mounted = true
-    fetchUsdToEgpRate().then((r) => {
+    fetchEURToEgpRate().then((r) => {
       if (mounted) setFxRate(r)
     })
     return () => {
@@ -116,8 +116,8 @@ export function EnrollmentForm() {
   }, [selectedCourse])
 
   const egpEquivalent = useMemo(() => {
-    if (!selectedCourseData?.priceUSD || !fxRate) return null
-    return Math.round(selectedCourseData.priceUSD * fxRate)
+    if (!selectedCourseData?.priceEUR || !fxRate) return null
+    return Math.round(selectedCourseData.priceEUR * fxRate)
   }, [selectedCourseData, fxRate])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -292,18 +292,18 @@ export function EnrollmentForm() {
 
             {/* ✅ PRICE SUMMARY (Added) */}
             {selectedCourseData &&
-              (selectedCourseData.priceUSD || selectedCourseData.priceNote?.en) && (
+              (selectedCourseData.priceEUR || selectedCourseData.priceNote?.en) && (
                 <div className="mt-4 rounded-lg border bg-gray-50 p-4 dark:bg-gray-800">
                   <div className="flex flex-wrap items-center gap-3">
-                    {selectedCourseData.oldPriceUSD && (
+                    {selectedCourseData.oldPriceEUR && (
                       <span className="text-red-700 line-through font-semibold text-base">
-                        ${selectedCourseData.oldPriceUSD}
+                        ${selectedCourseData.oldPriceEUR}
                       </span>
                     )}
 
-                    {selectedCourseData.priceUSD && (
+                    {selectedCourseData.priceEUR && (
                       <span className="text-black dark:text-white font-bold text-2xl">
-                        ${selectedCourseData.priceUSD}
+                        ${selectedCourseData.priceEUR}
                       </span>
                     )}
 
@@ -314,7 +314,7 @@ export function EnrollmentForm() {
                     )}
                   </div>
 
-                  {selectedCourseData.priceUSD && (
+                  {selectedCourseData.priceEUR && (
                     <div className="mt-2 text-sm text-gray-700 dark:text-gray-300">
                       {egpEquivalent ? (
                         <>
