@@ -45,7 +45,7 @@ export const courses: Course[] = [
 
     // ✅ Price display (old + new)
     oldPriceEUR: 150,
-    priceEUR: 110,
+    priceEUR: 100,
     priceNote: { en: 'Launch Offer' },
 
     overview: {
@@ -97,7 +97,7 @@ export const courses: Course[] = [
     format: { en: 'Online/Hybrid' },
 
     oldPriceEUR: 150,
-    priceEUR: 120,
+    priceEUR: 10,
     priceNote: { en: 'Launch Offer' },
 
     overview: {
@@ -148,7 +148,7 @@ export const courses: Course[] = [
     format: { en: 'Online' },
 
     oldPriceEUR: 150,
-    priceEUR: 120,
+    priceEUR: 100,
     priceNote: { en: 'Launch Offer' },
 
     overview: {
@@ -200,7 +200,7 @@ export const courses: Course[] = [
     format: { en: 'Online/Hybrid' },
 
     oldPriceEUR: 150,
-    priceEUR: 120,
+    priceEUR: 10,
     priceNote: { en: 'Launch Offer' },
 
     overview: {
@@ -251,7 +251,7 @@ export const courses: Course[] = [
     format: { en: 'Online/Hybrid' },
 
     oldPriceEUR: 150,
-    priceEUR: 120,
+    priceEUR: 10,
     priceNote: { en: 'Launch Offer' },
 
     overview: {
@@ -302,7 +302,7 @@ export const courses: Course[] = [
     format: { en: 'Online' },
 
     oldPriceEUR: 150,
-    priceEUR: 120,
+    priceEUR: 100,
     priceNote: { en: 'Launch Offer' },
 
     overview: {
@@ -353,7 +353,7 @@ export const courses: Course[] = [
     format: { en: 'Online/Hybrid' },
 
     oldPriceEUR: 150,
-    priceEUR: 120,
+    priceEUR: 100,
     priceNote: { en: 'Launch Offer' },
 
     overview: {
@@ -404,7 +404,7 @@ export const courses: Course[] = [
     format: { en: 'Online/Hybrid' },
 
     oldPriceEUR: 220,
-    priceEUR: 150,
+    priceEUR: 120,
     priceNote: { en: 'Launch Offer' },
 
     overview: {
